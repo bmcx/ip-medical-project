@@ -5,8 +5,10 @@ import { isEmpty, isLoaded } from "react-redux-firebase";
 
 import AddProfileInfoContainer from "./pages/Auth/AddProfileInfoContainer";
 import AuthContainer from "./pages/Auth/AuthContainer";
+import DoctorHome from "./pages/Doctor/Home/DoctorHome";
 import LandingPage from "./pages/Landing/LandingPage";
 import LoadingContainer from "./pages/Loading/LoadingContainer";
+import PatientHome from "./pages/Patient/Home/PatientHome";
 import SideNav from "./common/containers/SideNavContainer";
 import { ToastContainer } from "react-toastify";
 import { __RouterContext } from "react-router";
@@ -62,6 +64,19 @@ function App(props) {
     },
   });
 
+  const getHomePage = () => {
+    if (!profile) return LandingPage;
+
+    switch (profile?.role) {
+      case "DOCTOR":
+        return DoctorHome;
+      case "PATIENT":
+        return PatientHome;
+      default:
+        return LandingPage;
+    }
+  };
+
   return (
     <div className="flex justify-center bg-gray-900">
       <ToastContainer position="top-center" toastClassName="rounded-lg" />
@@ -113,7 +128,7 @@ function App(props) {
             className="flex-1 flex-col overflow-y-auto bg-gray-50"
           >
             <Switch location={item}>
-              <Route path="/" component={LandingPage} exact />
+              <Route path="/" component={getHomePage()} exact />
               <Route path="*" component={() => <div>Not found</div>} />
             </Switch>
           </animated.div>
