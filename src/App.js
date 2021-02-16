@@ -1,25 +1,132 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from "react";
+import { Route, Switch } from "react-router-dom";
+import { animated, useSpring, useTransition } from "react-spring";
+import { isEmpty, isLoaded } from "react-redux-firebase";
 
-function App() {
+import AddProfileInfoContainer from "./pages/Auth/AddProfileInfoContainer";
+import AuthContainer from "./pages/Auth/AuthContainer";
+import LandingPage from "./pages/Landing/LandingPage";
+import LoadingContainer from "./pages/Loading/LoadingContainer";
+import SideNav from "./common/containers/SideNavContainer";
+import { ToastContainer } from "react-toastify";
+import { __RouterContext } from "react-router";
+import { connect } from "react-redux";
+
+function App(props) {
+  const { auth, profile, authModalVisible } = props;
+  const loaded = isLoaded(auth, profile);
+  const { location } = useContext(__RouterContext);
+  const routeTransitions = useTransition(
+    location,
+    (location) => location.pathname,
+    {
+      from: {
+        opacity: 0,
+        transform: "translate(5%,0)",
+        position: "absolute",
+        width: "100%",
+      },
+      enter: {
+        opacity: 1,
+        transform: "translate(0,0)",
+        position: "relative",
+        width: "100%",
+      },
+      leave: {
+        opacity: 0,
+        transform: "translate(-5%,0)",
+        position: "absolute",
+        width: "100%",
+      },
+    }
+  );
+  const loadingProps = useSpring({
+    opacity: loaded ? 0 : 1,
+    height: loaded ? "0vh" : "100vh",
+    overflow: "hidden",
+    position: "absolute",
+    zIndex: 999,
+  });
+  const authModalTransitions = useTransition(authModalVisible, null, {
+    from: {
+      opacity: 0,
+      backdropFilter: "blur(0px)",
+    },
+    enter: {
+      opacity: 1,
+      backdropFilter: "blur(5px)",
+    },
+    leave: {
+      opacity: 0,
+      backdropFilter: "blur(0px)",
+    },
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex justify-center bg-gray-900">
+      <ToastContainer position="top-center" toastClassName="rounded-lg" />
+
+      <animated.div style={loadingProps}>
+        <LoadingContainer
+          authLoaded={isLoaded(auth)}
+          profileLoaded={isLoaded(profile)}
+        />
+      </animated.div>
+      {!isEmpty(auth) && profile.profileCompleted === undefined ? (
+        <AddProfileInfoContainer auth={auth} />
+      ) : null}
+      {authModalTransitions.map(
+        ({ item, key, props: style }) =>
+          item && (
+            <animated.div
+              key={key}
+              style={style}
+              className="w-screen h-screen absolute z-20"
+            >
+              <AuthContainer />
+            </animated.div>
+          )
+      )}
+
+      {/* {authModalTransitions.map(
+        ({ item, key, props: style }) =>
+          item && (
+            <animated.div
+              key={key}
+              style={style}
+              className="w-screen h-screen absolute z-20"
+            >
+              <AddNewContainer />
+            </animated.div>
+          )
+      )} */}
+
+      <div
+        style={{ width: "1600px" }}
+        className=" h-screen py-2 pr-2 rounded-lg bg-gray-50 flex relative overflow-hidden"
+      >
+        <SideNav auth={auth} profile={profile} />
+        {routeTransitions.map(({ item, props, key }) => (
+          <animated.div
+            key={key}
+            style={props}
+            className="flex-1 flex-col overflow-y-auto bg-gray-50"
+          >
+            <Switch location={item}>
+              <Route path="/" component={LandingPage} exact />
+              <Route path="*" component={() => <div>Not found</div>} />
+            </Switch>
+          </animated.div>
+        ))}
+      </div>
     </div>
   );
 }
-
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    authModalVisible: state.auth.authModalVisible,
+    profile: state.firebase.profile,
+  };
+};
+export default connect(mapStateToProps)(App);
