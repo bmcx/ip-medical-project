@@ -1,23 +1,25 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { createStore, applyMiddleware, compose } from "redux";
-import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-import {
-  reduxFirestore,
-  getFirestore,
-  createFirestoreInstance,
-} from "redux-firestore";
-import { ReactReduxFirebaseProvider, getFirebase } from "react-redux-firebase";
-import firebaseConfig from "./utils/firebaseConfig";
-import firebase from "firebase/app";
-import reportWebVitals from "./reportWebVitals";
-import rootReducer from "./state/rootReducer";
 import "react-toastify/dist/ReactToastify.min.css";
 import "./assets/output.css";
 import "./assets/style.css";
+
+import { ReactReduxFirebaseProvider, getFirebase } from "react-redux-firebase";
+import { applyMiddleware, compose, createStore } from "redux";
+import {
+  createFirestoreInstance,
+  getFirestore,
+  reduxFirestore,
+} from "redux-firestore";
+
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import React from "react";
+import ReactDOM from "react-dom";
+import firebase from "firebase/app";
+import firebaseConfig from "./utils/firebaseConfig";
+import reportWebVitals from "./reportWebVitals";
+import rootReducer from "./state/rootReducer";
+import thunk from "redux-thunk";
 
 const store = createStore(
   rootReducer,
@@ -44,7 +46,9 @@ const rrfProps = {
 ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
-      <BrowserRouter basename={'/web-y2-s1-assignment/'}>
+      <BrowserRouter 
+      // basename={'/ip-medical-project/'}
+      >
         <App />
       </BrowserRouter>
     </ReactReduxFirebaseProvider>
