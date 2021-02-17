@@ -1,5 +1,5 @@
-import React from "react";
 import { IconInfoOutline } from "./Icons";
+import React from "react";
 import Tooltip from "./Tooltip";
 
 const FormInputControlled = ({
@@ -43,7 +43,7 @@ const FormInputControlled = ({
       className={` ${
         validationError
           ? "ring-red-400 ring-2 border-red-500"
-          : "focus:border-gray-500 focus:ring-gray-300 focus:ring "
+          : "focus:border-blue-500 focus:ring-blue-300 focus:ring-2"
       } bg-white text-gray-700 border border-gray-300 focus:outline-none rounded-lg py-2 px-4 block w-full transition-all ease-out duration-300`}
       type={type}
       onChange={onChange}

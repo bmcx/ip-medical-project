@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import FormInput from "../../../common/components/FormInput";
-import FormInputPassword from "../../../common/components/FormInputPassword";
-import { IconSpinner } from "../../../common/components/Icons";
-import LogoLong from "../../../common/components/LogoLong";
-import SignInWithGoogleButton from "../../../common/components/SignInWithGoogleButton";
+import React, { useEffect, useState } from "react";
 import {
   hideAuthModal,
   resetAuthError,
   signInAction,
   signInWithGoogleAction,
 } from "../../../state/auth/authActions";
+
+import Button from "../../../common/components/Button";
+import FormInput from "../../../common/components/FormInput";
+import FormInputPassword from "../../../common/components/FormInputPassword";
+import { IconSpinner } from "../../../common/components/Icons";
+import LogoLong from "../../../common/components/LogoLong";
+import SignInWithGoogleButton from "../../../common/components/SignInWithGoogleButton";
+import { connect } from "react-redux";
 
 const SignInForm = (props) => {
   const [loading, setLoading] = useState(false);
@@ -38,11 +40,11 @@ const SignInForm = (props) => {
       <LogoLong />
       <button
         onClick={() => props.hideAuthModal()}
-        className="absolute bg-gray-100 w-8 h-8 top-0 right-0 rounded-lg flex items-center hover:shadow-md justify-center transition-all ease-out duration-400 focus:outline-none"
+        className="absolute bg-gray-100 w-8 h-8 top-0 right-0 rounded-lg flex items-center hover:text-blue-500 hover:shadow-md justify-center transition-all ease-out duration-400 focus:outline-none"
       >
         🗙
       </button>
-      <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+      <p className="text-lg my-2 text-gray-600 text-center">Welcome back!</p>
       <SignInWithGoogleButton onClick={() => props.signInWithGoogle()} />
       <div className="mt-4 flex items-center justify-between">
         <span className="border-b w-1/5 lg:w-1/4"></span>
@@ -90,19 +92,9 @@ const SignInForm = (props) => {
           </div>
         ) : null}
         <div className="mt-6">
-          <button
-            disabled={loading}
-            type="submit"
-            className="bg-gray-700 text-white uppercase font-bold py-2 px-4 w-full rounded-lg hover:bg-gray-600 focus:outline-none focus:bg-gray-600 ease-out duration-300"
-          >
-            {loading ? (
-              <div className="w-6 h-6 mx-auto">
-                <IconSpinner colorClass="text-gray-300" />
-              </div>
-            ) : (
-              "Sign in"
-            )}
-          </button>
+          <Button type="submit" loading={loading}>
+            Sign in
+          </Button>
         </div>
       </form>
 
@@ -115,7 +107,7 @@ const SignInForm = (props) => {
             setPage("SignUp");
           }}
           disabled={loading}
-          className="text-xs text-gray-500 uppercase hover:underline focus:outline-none"
+          className="text-xs text-gray-500 uppercase hover:underline hover:text-blue-500 focus:outline-none"
         >
           or sign up
         </button>

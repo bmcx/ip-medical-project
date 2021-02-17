@@ -13,12 +13,12 @@ const Tooltip = ({ children, tooltipText }) => {
   return (
     <div className="relative flex items-center">
       <div
-        className="absolute whitespace-no-wrap bg-gray-700 text-white px-4 py-2 rounded flex items-center transition-all duration-150 w-32"
+        className="absolute whitespace-no-wrap bg-blue-500 text-white px-4 py-2 rounded flex items-center transition-all duration-150 w-32"
         style={{ left: "100%", opacity: 0 }}
         ref={tipRef}
       >
         <div
-          className="bg-gray-700 h-3 w-3 absolute"
+          className="bg-blue-500 h-3 w-3 absolute"
           style={{ left: "-6px", transform: "rotate(45deg)" }}
         />
         {tooltipText}

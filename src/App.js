@@ -78,7 +78,7 @@ function App(props) {
   };
 
   return (
-    <div className="flex justify-center bg-gray-900">
+    <div className="flex justify-center bg-gray-200">
       <ToastContainer position="top-center" toastClassName="rounded-lg" />
 
       <animated.div style={loadingProps}>
@@ -117,8 +117,7 @@ function App(props) {
       )} */}
 
       <div
-        style={{ width: "1600px" }}
-        className=" h-screen py-2 pr-2 rounded-lg bg-gray-50 flex relative overflow-hidden"
+        className="h-screen pr-2 rounded-2xl container bg-gray-50 flex relative overflow-hidden"
       >
         <SideNav auth={auth} profile={profile} />
         {routeTransitions.map(({ item, props, key }) => (
