@@ -37,7 +37,9 @@ const SignInForm = (props) => {
 
   return (
     <div className="bg-gray-50 rounded-lg w-96 shadow-lg p-4 z-20">
-      <LogoLong />
+      <div className="flex flex-row justify-center">
+        <LogoLong />
+      </div>
       <button
         onClick={() => props.hideAuthModal()}
         className="absolute bg-gray-100 w-8 h-8 top-0 right-0 rounded-lg flex items-center hover:text-blue-500 hover:shadow-md justify-center transition-all ease-out duration-400 focus:outline-none"

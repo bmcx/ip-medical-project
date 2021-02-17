@@ -45,6 +45,7 @@ function App(props) {
   const loadingProps = useSpring({
     opacity: loaded ? 0 : 1,
     height: loaded ? "0vh" : "100vh",
+    width: "100%",
     overflow: "hidden",
     position: "absolute",
     zIndex: 999,
@@ -78,32 +79,32 @@ function App(props) {
   };
 
   return (
-    <div className="flex justify-center bg-gray-200">
+    <div className="flex justify-center bg-gray-200 md:py-4 h-screen">
       <ToastContainer position="top-center" toastClassName="rounded-lg" />
+      <div className="md:rounded-2xl md:container w-screen bg-gray-50 flex relative overflow-hidden shadow-lg">
+        <animated.div style={loadingProps}>
+          <LoadingContainer
+            authLoaded={isLoaded(auth)}
+            profileLoaded={isLoaded(profile)}
+          />
+        </animated.div>
+        {!isEmpty(auth) && profile.profileCompleted === undefined ? (
+          <AddProfileInfoContainer auth={auth} />
+        ) : null}
+        {authModalTransitions.map(
+          ({ item, key, props: style }) =>
+            item && (
+              <animated.div
+                key={key}
+                style={style}
+                className="w-full h-full absolute z-20"
+              >
+                <AuthContainer />
+              </animated.div>
+            )
+        )}
 
-      <animated.div style={loadingProps}>
-        <LoadingContainer
-          authLoaded={isLoaded(auth)}
-          profileLoaded={isLoaded(profile)}
-        />
-      </animated.div>
-      {!isEmpty(auth) && profile.profileCompleted === undefined ? (
-        <AddProfileInfoContainer auth={auth} />
-      ) : null}
-      {authModalTransitions.map(
-        ({ item, key, props: style }) =>
-          item && (
-            <animated.div
-              key={key}
-              style={style}
-              className="w-screen h-screen absolute z-20"
-            >
-              <AuthContainer />
-            </animated.div>
-          )
-      )}
-
-      {/* {authModalTransitions.map(
+        {/* {authModalTransitions.map(
         ({ item, key, props: style }) =>
           item && (
             <animated.div
@@ -116,10 +117,7 @@ function App(props) {
           )
       )} */}
 
-      <div
-        className="h-screen pr-2 rounded-2xl container bg-gray-50 flex relative overflow-hidden"
-      >
-        <SideNav auth={auth} profile={profile} />
+        {profile?.role ? <SideNav auth={auth} profile={profile} /> : null}
         {routeTransitions.map(({ item, props, key }) => (
           <animated.div
             key={key}
