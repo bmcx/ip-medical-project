@@ -88,7 +88,7 @@ function App(props) {
             profileLoaded={isLoaded(profile)}
           />
         </animated.div>
-        {!isEmpty(auth) && profile.profileCompleted === undefined ? (
+        {!isEmpty(auth) && !profile.profileCompleted ? (
           <AddProfileInfoContainer auth={auth} />
         ) : null}
         {authModalTransitions.map(

@@ -130,7 +130,7 @@ const ProfileNav = ({ auth, profile, showAuthModal, signOut }) => {
       {signedIn ? (
         <button
           onClick={handleSignOut}
-          className="focus:outline-none text-xs py-1 mt-1 hover:text-gray-500"
+          className="focus:outline-none text-xs py-1 mt-1 hover:opacity-100 opacity-80 hover:underline text-white"
         >
           Sign out
         </button>
