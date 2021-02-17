@@ -63,7 +63,9 @@ const SignUpForm = (props) => {
       >
         🗙
       </button>
-      <LogoLong />
+      <div className="flex flex-row justify-center">
+        <LogoLong />
+      </div>
       <p className="text-xl my-2 text-gray-600 text-center">Welcome!</p>
       <SignInWithGoogleButton onClick={() => props.signInWithGoogle()} />
       <div className="mt-4 flex items-center justify-between">
