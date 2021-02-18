@@ -98,7 +98,6 @@ const AddProfileInfoContainer = ({ auth, authError, completeProfile }) => {
       photo: image.raw,
     });
   };
-
   return (
     <div
       style={{ backdropFilter: "blur(5px)" }}

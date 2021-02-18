@@ -24,10 +24,27 @@ const LandingPage = ({ showAuthModal }) => {
             <h1 className="font-black text-3xl lg:text-5xl text-gray-700 mb-10">
               Always Healthy.
             </h1>
-            <p className="font-bold">Manage your medical history</p>
-            <p className="font-bold">Talk to your doctor anytime</p>
-            <p className="font-bold">Get reminded when to take medicine</p>
-            <p>We provide mentioned services and much more..</p>
+            <p className="font-bold ">As a doctor</p>
+            <p className="font-semibold pl-4 text-sm">
+              Manage your medical supply stock
+            </p>
+            <p className="font-semibold pl-4 text-sm">
+              Automate the pill dispensing process
+            </p>
+            <p className="font-semibold pl-4 text-sm">
+              Easily arrange patient meetup schedules
+            </p>
+            <p className="font-bold mt-2">As a patient</p>
+            <p className="font-semibold pl-4 text-sm">
+              Manage your medical history
+            </p>
+            <p className="font-semibold pl-4 text-sm">
+              Talk to your doctor anytime
+            </p>
+            <p className="font-semibold pl-4 text-sm">
+              Get reminded when to take medicine
+            </p>
+            <p className="font-bold mt-2">You will get mentioned services</p>
           </div>
           <div className="mb-20 md:mb-0 w-40">
             <Button onClick={showAuthModal}>Get Stared</Button>
