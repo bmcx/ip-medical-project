@@ -1,4 +1,5 @@
 import {
+  IconChatOutline,
   IconGlobeOutline,
   IconHomeOutline,
   IconLogo,
@@ -22,6 +23,11 @@ const commonRoutes = [
 ];
 
 const doctorRoutes = [
+  {
+    path: "/chat",
+    label: "Chat",
+    icon: <IconChatOutline strokeWidth={2} colorClass="text-white" />,
+  },
   {
     path: "/settings",
     label: "Settings",
