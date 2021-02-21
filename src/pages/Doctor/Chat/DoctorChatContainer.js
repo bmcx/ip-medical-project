@@ -96,8 +96,41 @@ const ChatUserCard = () => {
     position={'left'}
     type={'text'}
     text={'This photo is really stunning.'}/>
+    import { MessageList } from 'react-chat-elements'
+
+<MessageList
+    className='message-list'
+    lockable={true}
+    toBottomHeight={'100%'}
+    dataSource={[
+        {
+            position: 'right',
+            type: 'text',
+            text: 'how are you?',
+            date: new Date(),
+        },
+        {
+          position: 'left',
+          type: 'text',
+          text: 'I am fine',
+          date: new Date(),
+      },
+      {
+        position: 'right',
+        type: 'text',
+        text: 'good bye',
+        date: new Date(),
+    },
+    {
+      position: 'right',
+      type: 'text',
+      text: 'then bye',
+      date: new Date(),
+  },
+    ]} />
 /</div>
   );
+  
 };
 
 export default DoctorChatContainer;
