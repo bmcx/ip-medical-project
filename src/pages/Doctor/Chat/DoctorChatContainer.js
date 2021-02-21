@@ -8,14 +8,14 @@ const DoctorChatContainer = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <div className="mx-10 mt-10 flex flex-row justify-between space-x-2 items-center border-b">
-        <div className="h-12 w-64 mx-1">
+        <div className="w-64 mx-1">
           <FormInputControlled
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search a patient"
           />
         </div>
-        <div className="flex-1 flex flex-row space-x-2 items-center h-12">
+        <div className="flex-1 flex flex-row space-x-2 items-center">
           <div className="w-8 h-8 bg-gray-500 rounded-full flex-shrink-0"></div>
           <div className="flex flex-col overflow-hidden">
             <p className="font-bold whitespace-nowrap text-gray-700">
@@ -30,7 +30,7 @@ const DoctorChatContainer = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-row">
+      <div className="flex-1 flex flex-row h-full">
         <div className="pl-10 flex flex-col flex-shrink-0 ">
           <div className="flex-1 flex flex-col space-y-4 overflow-y-auto p-1">
             <ChatUserCard />
@@ -69,68 +69,8 @@ const ChatUserCard = () => {
           </p>
         </div>
       </div>
-      import { ChatItem } from 'react-chat-elements'
-      import { MessageBox } from 'react-chat-elements'
-
-<MessageBox
-    position={'left'}
-    type={'photo'}
-    text={'react.svg'}
-    data={{
-        uri: 'http://localhost:3000/chat',
-        status: {
-            click: false,
-            loading: 0,
-        }
-    }}/>
-    import { MessageBox } from 'react-chat-elements'
-
-<MessageBox
-    reply={{
-        photoURL: 'abc.jpg',
-        title: 'senal ransika',
-        titleColor: '#000000',
-        message: 'This is the photo',
-    }}
-    onReplyMessageClick={() => console.log('reply clicked!')}
-    position={'left'}
-    type={'text'}
-    text={'This photo is really stunning.'}/>
-    import { MessageList } from 'react-chat-elements'
-
-<MessageList
-    className='message-list'
-    lockable={true}
-    toBottomHeight={'100%'}
-    dataSource={[
-        {
-            position: 'right',
-            type: 'text',
-            text: 'how are you?',
-            date: new Date(),
-        },
-        {
-          position: 'left',
-          type: 'text',
-          text: 'I am fine',
-          date: new Date(),
-      },
-      {
-        position: 'right',
-        type: 'text',
-        text: 'good bye',
-        date: new Date(),
-    },
-    {
-      position: 'right',
-      type: 'text',
-      text: 'then bye',
-      date: new Date(),
-  },
-    ]} />
-/</div>
+    </div>
   );
-  
 };
 
 export default DoctorChatContainer;
