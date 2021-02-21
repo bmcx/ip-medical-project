@@ -83,6 +83,19 @@ const ChatUserCard = () => {
             loading: 0,
         }
     }}/>
+    import { MessageBox } from 'react-chat-elements'
+
+<MessageBox
+    reply={{
+        photoURL: 'abc.jpg',
+        title: 'senal ransika',
+        titleColor: '#000000',
+        message: 'This is the photo',
+    }}
+    onReplyMessageClick={() => console.log('reply clicked!')}
+    position={'left'}
+    type={'text'}
+    text={'This photo is really stunning.'}/>
 /</div>
   );
 };
