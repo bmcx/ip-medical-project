@@ -69,7 +69,21 @@ const ChatUserCard = () => {
           </p>
         </div>
       </div>
-    </div>
+      import { ChatItem } from 'react-chat-elements'
+      import { MessageBox } from 'react-chat-elements'
+
+<MessageBox
+    position={'left'}
+    type={'photo'}
+    text={'react.svg'}
+    data={{
+        uri: 'http://localhost:3000/chat',
+        status: {
+            click: false,
+            loading: 0,
+        }
+    }}/>
+/</div>
   );
 };
 
