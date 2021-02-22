@@ -16,7 +16,7 @@ import { isEmpty } from "react-redux-firebase";
 
 const commonRoutes = [
   {
-    path: "/",
+    path: "/home",
     label: "Home",
     icon: <IconHomeOutline strokeWidth={2} colorClass="text-white" />,
   },

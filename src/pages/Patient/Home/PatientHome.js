@@ -1,6 +1,6 @@
 const PatientHome = () => {
     return (
-        <div>
+        <div>Patient Home</div>
     )
 }
 

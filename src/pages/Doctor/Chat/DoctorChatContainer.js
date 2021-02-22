@@ -6,8 +6,8 @@ import { useState } from "react";
 const DoctorChatContainer = () => {
   const [query, setQuery] = useState("");
   return (
-    <div className="w-full h-full flex flex-col">
-      <div className="mx-10 mt-10 flex flex-row justify-between space-x-2 items-center border-b">
+    <div className="w-full h-full flex flex-col relative">
+      <div className="px-10 py-10 absolute w-full flex flex-row justify-between space-x-4 items-center border-b h-12">
         <div className="w-64 mx-1">
           <FormInputControlled
             value={query}
@@ -30,7 +30,7 @@ const DoctorChatContainer = () => {
           </div>
         </div>
       </div>
-      <div className="flex-1 flex flex-row h-full">
+      <div className="flex flex-row h-full pt-24">
         <div className="pl-10 flex flex-col flex-shrink-0 ">
           <div className="flex-1 flex flex-col space-y-4 overflow-y-auto p-1">
             <ChatUserCard />
@@ -46,8 +46,10 @@ const DoctorChatContainer = () => {
             <ChatUserCard />
           </div>
         </div>
-        <div className="p-10 flex flex-col flex-1">
-          <div className="flex-1 flex flex-col space-y-4 overflow-y-auto p-2"></div>
+        <div className="px-10 flex flex-col flex-1">
+          <div className="flex-1 flex flex-col space-y-4 overflow-y-auto p-2 bg-gray-200">
+
+          </div>
         </div>
       </div>
     </div>

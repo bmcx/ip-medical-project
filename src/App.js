@@ -145,7 +145,8 @@ function App(props) {
               className="flex-col overflow-y-auto bg-gray-50"
             >
               <Switch location={item}>
-                <Route path="/" component={getHomePage()} exact />
+                <Route path="/" component={LandingPage} exact />
+                <Route path="/home" component={getHomePage()} />
                 <Route path="/chat" component={getChatPage()} />
                 <Route path="*" component={PageNotFound} />
               </Switch>

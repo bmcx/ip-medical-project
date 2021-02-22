@@ -1,50 +1,76 @@
-const DoctorHome = () => {
-    return (
-       <div className="m-1">
-            Doctor Home
-            <div className="m-5">
-                <div className=" mt-2 border border-blue-500 rounded-lg  " >
+import { Link, Switch } from "react-router-dom";
+import { Route, __RouterContext } from "react-router";
 
-                    <nav className="ml-10 ">
-                       <button className="ml-10 border border-bule-500">History</button>
-                       <button className="ml-10">Diagnosis</button>
-                       <button className="ml-10">Schedule</button>
-                       <button className="ml-10">Appoinments</button>
-                    </nav>
-                    <section>
-                        <figure className="bg-gray-100 rounded-x1 p-8">
-                        <img className="w-32 h-32 rounded-full max-auto self-center" src="C:\Users\Dilshan\Downloads" ></img>
-                        <div className=" pt-4   space-y-4">
-                        <figcaption className="font-medium">
-                            <div>name</div>
-                            <div>age</div>
-                            <div>medical History</div>
+import { Appointments } from "./Components/Appointments";
+import { Diagnosis } from "./Components/Diagnosis";
+import { History } from "./Components/History";
+import { Schedule } from "./Components/Schedule";
+import { animated } from "react-spring";
+import { useContext } from "react";
+import { useTransition } from "react-spring";
 
-                        </figcaption>
-                        </div>
-                        </figure>
+const DoctorHome = ({ match: { url } }) => {
+  const { location } = useContext(__RouterContext);
+  const routeTransitions = useTransition(
+    location,
+    (location) => location.pathname,
+    {
+      from: {
+        opacity: 0,
+        transform: "translate(5%,0)",
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+      },
+      enter: {
+        opacity: 1,
+        transform: "translate(0,0)",
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+      },
+      leave: {
+        opacity: 0,
+        transform: "translate(-5%,0)",
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+      },
+    }
+  );
+  return (
+    <div className="m-1">
+      Doctor Home
+      <div className="m-5">
+        <div className=" mt-2 border border-blue-500 rounded-lg  ">
+          <nav className="ml-10 ">
+            <Link
+              to={`${url}/history`}
+              className="ml-10 border border-bule-500"
+            >
+              History
+            </Link>
+            <Link to={`${url}/diagnosis`} className="ml-10">
+              Diagnosis
+            </Link>
+            <Link to={`${url}/schedule`} className="ml-10">
+              Schedule
+            </Link>
+            <Link to={`${url}/appointments`} className="ml-10">
+              Appointments
+            </Link>
+          </nav>
 
-                    </section>
-                    <section>
-                        <figure className="bg-gray-100 rounded-x1 p-8">
-                        <img className="w-32 h-32 rounded-full max-auto self-center" src="C:\Users\Dilshan\Downloads" ></img>
-                        <div className=" pt-4  space-y-4">
-                        <figcaption className="font-medium">
-                            <div>name</div>
-                            <div>age</div>
-                            <div>medical History</div>
-
-                        </figcaption>
-                        </div>
-                        </figure>
-
-                    </section>
-
-
-                </div>
-            </div>
+          <Switch>
+            <Route exact path={url} component={History} />
+            <Route path={`${url}/appointments`} component={Appointments} />
+            <Route path={`${url}/diagnosis`} component={Diagnosis} />
+            <Route path={`${url}/schedule`} component={Schedule} />
+          </Switch>
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default DoctorHome
+export default DoctorHome;
