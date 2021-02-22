@@ -47,8 +47,53 @@ const DoctorChatContainer = () => {
           </div>
         </div>
         <div className="px-10 flex flex-col flex-1">
-          <div className="flex-1 flex flex-col space-y-4 overflow-y-auto p-2 bg-gray-200">
-
+          <div className="flex-1 flex flex-col space-y-4 overflow-y-auto p-2 ">
+            <div className="flex-1 flex flex-col-reverse overflow-y-auto bg-gray-100 rounded-lg ">
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+              <ChatMessageRight message={"Message"} />
+              <ChatMessageLeft message={"Message"} />
+            </div>
+            <div className="flex-shrink-0 flex flex-row items-center space-x-2 pb-4">
+              <FormInputControlled />
+              <div className="w-8 h-8 bg-gray-300"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,6 +101,26 @@ const DoctorChatContainer = () => {
   );
 };
 
+const ChatMessageLeft = ({ message, type }) => {
+  return (
+    <div className="flex flex-row mb-1">
+      <div className=" flex flex-col bg-blue-500 text-white py-1 flex-grow-0 rounded-r-xl rounded-bl-xl px-2 max-w-6xl">
+        <div>{message}</div>
+        <div className=" text-2xs">20:10</div>
+      </div>
+    </div>
+  );
+};
+const ChatMessageRight = ({ message, type }) => {
+  return (
+    <div className="flex flex-row mb-1 justify-end">
+      <div className="flex flex-col items-end bg-gray-200 py-1 flex-grow-0 rounded-l-xl rounded-br-xl px-2 max-w-6xl">
+        <div>{message}</div>
+        <div className=" text-2xs">20:10</div>
+      </div>
+    </div>
+  );
+};
 const ChatUserCard = () => {
   return (
     <div className="flex flex-col p-4 shadow-sm rounded-lg w-64 select-none bg-white hover:bg-gray-100 cursor-pointer duration-300 ease-out">
