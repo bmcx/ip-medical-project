@@ -1,8 +1,6 @@
 const PatientHome = () => {
     return (
         <div>
-            patient home
-        </div>
     )
 }
 
