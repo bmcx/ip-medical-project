@@ -46,7 +46,7 @@ const DoctorHome = ({ match: { url } }) => {
           <nav className="ml-10 ">
             <Link
               to={`${url}/history`}
-              className="ml-10 border border-bule-500"
+              className="ml-10"
             >
               History
             </Link>
