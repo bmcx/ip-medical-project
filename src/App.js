@@ -11,6 +11,7 @@ import LandingPage from "./pages/Landing/LandingPage";
 import LoadingContainer from "./pages/Loading/LoadingContainer";
 import PageNotFound from "./pages/Error/PageNotFound";
 import PatientHome from "./pages/Patient/Home/PatientHome";
+import Profile from "./pages/Profile/Profile";
 import SideNav from "./common/containers/SideNavContainer";
 import { ToastContainer } from "react-toastify";
 import { __RouterContext } from "react-router";
@@ -148,6 +149,7 @@ function App(props) {
                 <Route path="/" component={LandingPage} exact />
                 <Route path="/home" component={getHomePage()} />
                 <Route path="/chat" component={getChatPage()} />
+                <Route path="/profile" component={Profile} />
                 <Route path="*" component={PageNotFound} />
               </Switch>
             </animated.div>
