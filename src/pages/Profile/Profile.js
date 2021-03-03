@@ -16,7 +16,11 @@ const Profile = () => {
 
         <div className="m-10 ml-20">
           <div className="flex justify-between items-center">
-            <select className="h-6 bg-gray-50 mt-2 mr-1 ">
+            <select className="h-7 mt-2 mr-1  focus:border-blue-500 
+                    focus:ring-blue-300 focus:ring-2 bg-white text-gray-700 border border-gray-300 
+                    focus:outline-none rounded-lg  transition-all 
+                    ease-out duration-300"  >
+
               <option value="Rev">Rev.</option>
               <option value="Dr">Dr.</option>
               <option value="Mr">Mr.</option>
@@ -67,31 +71,7 @@ const Profile = () => {
 
               </FormInput>
 
-              <div className="mr-16">
-                <div className="flex justify-between items-center">
-                  <div>
-
-
-                    <FormInput placeholder="Day" required="ture" className="w-5">
-                      <div className="flex flex-wrap mx-3 mb6 "></div>
-                      <input className="flex"> </input>
-                    </FormInput>
-                  </div>
-                  <div>
-
-                    <FormInput placeholder="Month" required="ture" className="w-5">
-                      <div className="flex flex-wrap mx-3 mb6"></div>
-                      <input className="flex"> </input>
-                    </FormInput>
-                  </div>
-                  <div>
-                    <FormInput placeholder="Year" required="ture" className="w-5">
-                      <div className="flex flex-wrap mx-3 mb6"></div>
-                      <input className="flex"> </input>
-                    </FormInput>
-                  </div>
-                </div>
-              </div>
+             
               <div className="  mr-96">
                 <div className="flex justify-between items-center">
                   <div className="mr-2">
@@ -113,9 +93,21 @@ const Profile = () => {
                   <div className="flex flex-wrap mx-3 mb6"></div>
                   <input className="flex"> </input>
 
-
+              
 
                 </FormInput>
+              </div>
+              <div className="mr-16">
+                <div className="flex justify-between items-center">
+                  <div className="">
+
+                    <label className="">Date of Birth : </label><input className=" focus:border-blue-500 
+                    focus:ring-blue-300 focus:ring-2 bg-white text-gray-700 border border-gray-300 
+                    focus:outline-none rounded-lg py-1 px-4 block w-full transition-all 
+                    ease-out duration-300" type="date" value="2021.03.03" />
+
+                  </div>
+                </div>
               </div>
 
 
