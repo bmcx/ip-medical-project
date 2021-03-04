@@ -4,7 +4,7 @@ const SignInWithGoogleButton = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100 w-full transition-all ease-out duration-400 focus:outline-none"
+      className="flex items-center justify-center text-white rounded-lg shadow-md hover:bg-gray-100 w-full transition-all ease-out duration-400 focus:outline-none"
     >
       <div className="px-4 py-3 text-center text-gray-600 font-bold w-full">
         <svg className="h-6 w-6 absolute" viewBox="0 0 40 40">

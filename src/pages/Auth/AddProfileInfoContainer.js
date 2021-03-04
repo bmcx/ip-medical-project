@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
+
+import Button from "../../common/components/Button";
 import FormInput from "../../common/components/FormInput";
 import { IconSpinner } from "../../common/components/Icons";
 import { completeProfileAction } from "../../state/auth/authActions";
+import { connect } from "react-redux";
 
 const AddProfileInfoContainer = ({ auth, authError, completeProfile }) => {
   const [loading, setLoading] = useState(false);
@@ -96,11 +98,10 @@ const AddProfileInfoContainer = ({ auth, authError, completeProfile }) => {
       photo: image.raw,
     });
   };
-
   return (
     <div
       style={{ backdropFilter: "blur(5px)" }}
-      className="w-screen h-screen absolute z-20 flex flex-col items-center justify-center"
+      className="w-full h-full absolute z-20 flex flex-col items-center justify-center"
     >
       <div
         className="bg-gray-50 rounded-lg shadow-lg p-4 z-20"
@@ -126,7 +127,7 @@ const AddProfileInfoContainer = ({ auth, authError, completeProfile }) => {
                       inputError.photo
                         ? "ring-red-400 ring-2 border-red-500"
                         : ""
-                    } w-32 h-32 bg-gray-300 shadow-md overflow-hidden rounded-full flex items-center justify-center`}
+                    } w-32 h-32 bg-blue-300 shadow-md overflow-hidden rounded-full flex items-center justify-center`}
                   >
                     {image.preview ? (
                       <img
@@ -136,7 +137,7 @@ const AddProfileInfoContainer = ({ auth, authError, completeProfile }) => {
                       />
                     ) : (
                       <>
-                        <p className="text-sm text-center">
+                        <p className="text-sm text-center text-white font-bold">
                           Select a profile photo
                         </p>
                       </>
@@ -220,23 +221,13 @@ const AddProfileInfoContainer = ({ auth, authError, completeProfile }) => {
             </div>
           </div>
           <div className="mt-8">
-            <button
-              // disabled={loading}
-              type="submit"
-              className="bg-gray-700 text-white uppercase font-bold py-2 px-4 w-full rounded-lg hover:bg-gray-600 focus:outline-none focus:bg-gray-600 ease-out duration-300"
-            >
-              {loading ? (
-                <div className="w-6 h-6 mx-auto">
-                  <IconSpinner colorClass="text-gray-300" />
-                </div>
-              ) : (
-                "Sign in"
-              )}
-            </button>
+            <Button type="submit" loading={loading}>
+              Done
+            </Button>
           </div>
         </form>
       </div>
-      <div className="w-screen h-screen absolute bg-black opacity-40"></div>
+      <div className="w-full h-full absolute bg-black opacity-40"></div>
     </div>
   );
 };

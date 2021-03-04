@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
 import { animated, useTransition } from "react-spring";
-import { hideAuthModal } from "../../state/auth/authActions";
+
 import SignInForm from "./component/SignInComponent";
 import SignUpForm from "./component/SignUpComponent";
-
+import { connect } from "react-redux";
+import { hideAuthModal } from "../../state/auth/authActions";
 
 const AuthContainer = () => {
   const [page, setPage] = useState("SignIn");
@@ -24,7 +24,7 @@ const AuthContainer = () => {
   });
 
   return (
-    <div className="w-screen h-screen absolute z-20 flex flex-col items-center justify-center">
+    <div className="w-full h-full absolute z-20 flex flex-col items-center justify-center">
       {authFormTransitions.map(
         ({ item, key, props: style }) =>
           item && (
@@ -38,7 +38,7 @@ const AuthContainer = () => {
           )
       )}
       <div
-        className="w-screen h-screen absolute bg-black opacity-40"
+        className="w-full h-full absolute bg-black opacity-40"
       ></div>
     </div>
   );

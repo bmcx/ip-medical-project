@@ -46,9 +46,6 @@ const PatientHome = () => {
                                 </ul>
                             </div>
                     </div>        
-                        
-                
-                    
                 </div>
             </div>
         </div>

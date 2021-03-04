@@ -5,10 +5,13 @@ import { isEmpty, isLoaded } from "react-redux-firebase";
 
 import AddProfileInfoContainer from "./pages/Auth/AddProfileInfoContainer";
 import AuthContainer from "./pages/Auth/AuthContainer";
+import ChatContainer from "./pages/Chat/ChatContainer";
 import DoctorHome from "./pages/Doctor/Home/DoctorHome";
 import LandingPage from "./pages/Landing/LandingPage";
 import LoadingContainer from "./pages/Loading/LoadingContainer";
+import PageNotFound from "./pages/Error/PageNotFound";
 import PatientHome from "./pages/Patient/Home/PatientHome";
+import Profile from "./pages/Profile/Profile";
 import SideNav from "./common/containers/SideNavContainer";
 import { ToastContainer } from "react-toastify";
 import { __RouterContext } from "react-router";
@@ -27,24 +30,28 @@ function App(props) {
         transform: "translate(5%,0)",
         position: "absolute",
         width: "100%",
+        height: "100%",
       },
       enter: {
         opacity: 1,
         transform: "translate(0,0)",
-        position: "relative",
+        position: "absolute",
         width: "100%",
+        height: "100%",
       },
       leave: {
         opacity: 0,
         transform: "translate(-5%,0)",
         position: "absolute",
         width: "100%",
+        height: "100%",
       },
     }
   );
   const loadingProps = useSpring({
     opacity: loaded ? 0 : 1,
     height: loaded ? "0vh" : "100vh",
+    width: "100%",
     overflow: "hidden",
     position: "absolute",
     zIndex: 999,
@@ -78,32 +85,33 @@ function App(props) {
   };
 
   return (
-    <div className="flex justify-center bg-gray-900">
+    <div className="flex justify-center bg-gray-200 md:py-4 h-screen">
       <ToastContainer position="top-center" toastClassName="rounded-lg" />
+      <div className="md:rounded-2xl md:container w-screen bg-gray-50 flex relative overflow-hidden shadow-lg">
+        <animated.div style={loadingProps}>
+          <LoadingContainer
+            authLoaded={isLoaded(auth)}
+            profileLoaded={isLoaded(profile)}
+          />
+        </animated.div>
+        {!isEmpty(auth) && !profile.profileCompleted ? (
+          <AddProfileInfoContainer auth={auth} />
+        ) : null}
 
-      <animated.div style={loadingProps}>
-        <LoadingContainer
-          authLoaded={isLoaded(auth)}
-          profileLoaded={isLoaded(profile)}
-        />
-      </animated.div>
-      {!isEmpty(auth) && profile.profileCompleted === undefined ? (
-        <AddProfileInfoContainer auth={auth} />
-      ) : null}
-      {authModalTransitions.map(
-        ({ item, key, props: style }) =>
-          item && (
-            <animated.div
-              key={key}
-              style={style}
-              className="w-screen h-screen absolute z-20"
-            >
-              <AuthContainer />
-            </animated.div>
-          )
-      )}
+        {authModalTransitions.map(
+          ({ item, key, props: style }) =>
+            item && (
+              <animated.div
+                key={key}
+                style={style}
+                className="w-full h-full absolute z-20"
+              >
+                <AuthContainer />
+              </animated.div>
+            )
+        )}
 
-      {/* {authModalTransitions.map(
+        {/* {authModalTransitions.map(
         ({ item, key, props: style }) =>
           item && (
             <animated.div
@@ -116,23 +124,24 @@ function App(props) {
           )
       )} */}
 
-      <div
-        style={{ width: "1600px" }}
-        className=" h-screen py-2 pr-2 rounded-lg bg-gray-50 flex relative overflow-hidden"
-      >
-        <SideNav auth={auth} profile={profile} />
-        {routeTransitions.map(({ item, props, key }) => (
-          <animated.div
-            key={key}
-            style={props}
-            className="flex-1 flex-col overflow-y-auto bg-gray-50"
-          >
-            <Switch location={item}>
-              <Route path="/" component={getHomePage()} exact />
-              <Route path="*" component={() => <div>Not found</div>} />
-            </Switch>
-          </animated.div>
-        ))}
+        {profile?.role ? <SideNav auth={auth} profile={profile} /> : null}
+        <div className="flex-1 relative h-full">
+          {routeTransitions.map(({ item, props, key }) => (
+            <animated.div
+              key={key}
+              style={props}
+              className="flex-col overflow-y-auto bg-gray-50"
+            >
+              <Switch location={item}>
+                <Route path="/" component={LandingPage} exact />
+                <Route path="/home" component={getHomePage()} />
+                <Route path="/chat" component={ChatContainer} />
+                <Route path="/profile" component={Profile} />
+                <Route path="*" component={PageNotFound} />
+              </Switch>
+            </animated.div>
+          ))}
+        </div>
       </div>
     </div>
   );

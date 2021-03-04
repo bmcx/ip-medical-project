@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import FormInput from "../../../common/components/FormInput";
-import FormInputPassword from "../../../common/components/FormInputPassword";
-import { IconSpinner } from "../../../common/components/Icons";
-import LogoLong from "../../../common/components/LogoLong";
-import SignInWithGoogleButton from "../../../common/components/SignInWithGoogleButton";
+import React, { useEffect, useState } from "react";
 import {
   hideAuthModal,
   resetAuthError,
   signInWithGoogleAction,
   signUpAction,
 } from "../../../state/auth/authActions";
+
+import Button from "../../../common/components/Button";
+import FormInput from "../../../common/components/FormInput";
+import FormInputPassword from "../../../common/components/FormInputPassword";
+import { IconSpinner } from "../../../common/components/Icons";
+import LogoLong from "../../../common/components/LogoLong";
+import SignInWithGoogleButton from "../../../common/components/SignInWithGoogleButton";
+import { connect } from "react-redux";
 
 const SignUpForm = (props) => {
   const [loading, setLoading] = useState(false);
@@ -61,8 +63,10 @@ const SignUpForm = (props) => {
       >
         🗙
       </button>
-      <LogoLong />
-      <p className="text-xl text-gray-600 text-center">Welcome!</p>
+      <div className="flex flex-row justify-center">
+        <LogoLong />
+      </div>
+      <p className="text-xl my-2 text-gray-600 text-center">Welcome!</p>
       <SignInWithGoogleButton onClick={() => props.signInWithGoogle()} />
       <div className="mt-4 flex items-center justify-between">
         <span className="border-b w-1/5 lg:w-1/4"></span>
@@ -154,7 +158,7 @@ const SignUpForm = (props) => {
               name="phone"
               type="text"
               required={true}
-              tooltipText="Phone will be shared with keels staff"
+              tooltipText="Phone will be used by the doctor to contact you"
               onChange={(e) => {
                 setPhone(e.target.value);
               }}
@@ -165,19 +169,9 @@ const SignUpForm = (props) => {
           </div>
         </div>
         <div className="mt-8">
-          <button
-            disabled={loading}
-            type="submit"
-            className="bg-gray-700 text-white uppercase font-bold py-2 px-4 w-full rounded-lg hover:bg-gray-600 focus:outline-none focus:bg-gray-600 ease-out duration-300"
-          >
-            {loading ? (
-              <div className="w-6 h-6 mx-auto">
-                <IconSpinner colorClass="text-gray-300" />
-              </div>
-            ) : (
-              "Sign Up"
-            )}
-          </button>
+          <Button type="submit" loading={loading}>
+            Sign Up
+          </Button>
         </div>
       </form>
       <div className="mt-4 flex items-center justify-between">
@@ -188,7 +182,7 @@ const SignUpForm = (props) => {
             props.resetAuthError();
             props.setPage("SignIn");
           }}
-          className="text-xs text-gray-500 uppercase hover:underline focus:outline-none"
+          className="text-xs text-gray-500 hover:text-blue-500 uppercase hover:underline focus:outline-none"
         >
           or sign in
         </button>
