@@ -34,11 +34,20 @@ const doctorRoutes = [
     icon: <IconSettingsOutline strokeWidth={2} colorClass="text-white" />,
   },
 ];
+const patientRoutes = [
+  {
+    path: "/chat",
+    label: "Chat",
+    icon: <IconChatOutline strokeWidth={2} colorClass="text-white" />,
+  },
+];
 
 const SideNav = (props) => {
   const getRoutesForUser = () => {
     if (props.profile?.role === "DOCTOR")
       return [...commonRoutes, ...doctorRoutes];
+    if (props.profile?.role === "PATIENT")
+      return [...commonRoutes, ...patientRoutes];
     return commonRoutes;
   };
   return (
@@ -49,7 +58,7 @@ const SideNav = (props) => {
       <nav className="my-10 flex-grow">
         <ul className="flex flex-col space-y-5">
           {getRoutesForUser().map((route) => (
-            <SideNavItem to={route.path}>
+            <SideNavItem to={route.path} key={route.path}>
               {(isActive) => (
                 <div
                   className={`flex flex-row bg-white ${

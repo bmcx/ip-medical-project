@@ -5,7 +5,7 @@ import { isEmpty, isLoaded } from "react-redux-firebase";
 
 import AddProfileInfoContainer from "./pages/Auth/AddProfileInfoContainer";
 import AuthContainer from "./pages/Auth/AuthContainer";
-import DoctorChatContainer from "./pages/Doctor/Chat/DoctorChatContainer";
+import ChatContainer from "./pages/Chat/ChatContainer";
 import DoctorHome from "./pages/Doctor/Home/DoctorHome";
 import LandingPage from "./pages/Landing/LandingPage";
 import LoadingContainer from "./pages/Loading/LoadingContainer";
@@ -84,19 +84,6 @@ function App(props) {
     }
   };
 
-  const getChatPage = () => {
-    if (!profile) return PageNotFound;
-
-    switch (profile?.role) {
-      case "DOCTOR":
-        return DoctorChatContainer;
-      case "PATIENT":
-        return PatientHome;
-      default:
-        return PageNotFound;
-    }
-  };
-
   return (
     <div className="flex justify-center bg-gray-200 md:py-4 h-screen">
       <ToastContainer position="top-center" toastClassName="rounded-lg" />
@@ -148,7 +135,7 @@ function App(props) {
               <Switch location={item}>
                 <Route path="/" component={LandingPage} exact />
                 <Route path="/home" component={getHomePage()} />
-                <Route path="/chat" component={getChatPage()} />
+                <Route path="/chat" component={ChatContainer} />
                 <Route path="/profile" component={Profile} />
                 <Route path="*" component={PageNotFound} />
               </Switch>
