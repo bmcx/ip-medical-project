@@ -6,7 +6,7 @@ const PatientHome = () => {
                     <h1 className="text-4xl">User name</h1>
                     <h3 className="text-xl">User id</h3>
                 </div>
-                <div className="p-2 px-10 rounded-lg  mx-3  w-36  bg-gray-300  shadow">
+                <div className="p-2 px-9 rounded-lg  mx-3  w-36  bg-gray-300  shadow">
                     <button >
                        <a href="#shedule">Shedule</a>
                     </button>
