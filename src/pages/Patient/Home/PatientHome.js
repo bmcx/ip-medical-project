@@ -7,7 +7,9 @@ const PatientHome = () => {
                     <h3 className="text-xl">User id</h3>
                 </div>
                 <div>
-                    
+                    <button className="p-2 px-7 self-auto">
+                       <a href="#shedule page">Shedule</a>
+                    </button>
                 </div>
             </div>
             <div>
@@ -15,27 +17,33 @@ const PatientHome = () => {
                     <div>
                         <div className="p-5 m-6 bg-blue-200 rounded-lg shadow">My medications</div>
                             <div className="p-8">
-                                <div>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</div>
-                                <div>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</div>
-                                <div>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</div>
+                                <ul className="list-disc">
+                                    <li>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</li>
+                                    <li>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</li>
+                                    <li>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</li>
+                                </ul>
                             </div>
                     </div>
                     
                     <div>
                         <div className="p-5 m-6 bg-blue-200 rounded-lg shadow">My appointments</div>
-                            <div className="p-8">]
-                                <div>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</div>
-                                <div>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</div>
-                                <div>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</div>
+                            <div className="p-8">
+                                <ul className="list-disc">
+                                    <li>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</li>
+                                    <li>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</li>
+                                    <li>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</li>
+                                </ul>
                             </div>
                     </div>
                     
                     <div>
                         <div className="p-5 m-6 bg-blue-200 rounded-lg shadow">History</div>
-                            <div className="p-8">
-                                <div>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</div>
-                                <div>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</div>
-                                <div>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</div>
+                            <div className="p-8 ">
+                                <ul className="list-disc">
+                                    <li>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</li>
+                                    <li>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</li>
+                                    <li>Children need permission from their parents in the form of an authorization letter when they have to go on a school field trip.</li>
+                                </ul>
                             </div>
                     </div>        
                         
