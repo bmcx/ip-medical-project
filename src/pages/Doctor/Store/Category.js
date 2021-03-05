@@ -7,6 +7,7 @@ import { showAuthModal } from "../../../state/auth/authActions";
 import Medicine from "./Medicine";
 import AddCategory from "./AddCategory";
 
+
 export const Category = ({ match: { url } }) => {
   const [query, setQuery] = useState("");
   return (
@@ -25,10 +26,12 @@ export const Category = ({ match: { url } }) => {
             className=" cursor-pointer hover:bg-blue-400 bg-blue-500  py-1.5 px-1 text-white font-bold rounded-lg select-none"
           >
             <Link to={`${url}/addcategory`} className="ml-10">
-                            Add Category
-                            </Link>
+              Add Category
+            </Link>
+            
           </div>
         </div>
+        
       </div>
 
       <div className="px-10 py-20 flex flex-col">
@@ -57,7 +60,7 @@ export const Category = ({ match: { url } }) => {
                         <div className="ml-4">
                           <div className="text-sm font-medium text-gray-900">
                             <Link to={`${url}/allergenics`} className="ml-10">
-                            Allergenics
+                              Allergenics
                             </Link>
                           </div>
                         </div>
@@ -70,8 +73,13 @@ export const Category = ({ match: { url } }) => {
                       >
                         Edit
                       </a>
-                      <a href="#"
-                        className="text-indigo-600 hover:text-indigo-900"> Delete</a>
+                      <a
+                        href="#"
+                        className="text-indigo-600 hover:text-indigo-900"
+                      >
+                        {" "}
+                        Delete
+                      </a>
                     </td>
                   </tr>
                   <tr onClick={showAuthModal} className="hover:bg-gray-400">
@@ -79,7 +87,7 @@ export const Category = ({ match: { url } }) => {
                       <div className="flex items-center">
                         <div className="ml-4">
                           <div className="text-sm font-medium  text-gray-900">
-                            <Link to={`${url}/xyz`} className="ml-10">
+                            <Link to={`${url}/xyz`} className="ml-10" categoryID="abc">
                               XYZ
                             </Link>
                           </div>
@@ -93,8 +101,13 @@ export const Category = ({ match: { url } }) => {
                       >
                         Edit
                       </a>
-                      <a href="#"
-                        className="text-indigo-600 hover:text-indigo-900"> Delete</a>
+                      <a
+                        href="#"
+                        className="text-indigo-600 hover:text-indigo-900"
+                      >
+                        {" "}
+                        Delete
+                      </a>
                     </td>
                   </tr>
                 </tbody>
@@ -104,10 +117,13 @@ export const Category = ({ match: { url } }) => {
         </div>
       </div>
       <Switch>
-        <Route path={`${url}/xyz`} component={Medicine} />
-        <Route path={`${url}/Allergenics`} component={Medicine} />
         <Route path={`${url}/addcategory`} component={AddCategory} />
+        <Route path={`${url}/:categoryID`} component={Medicine} />
+        <Route path={`${url}/Allergenics`} component={Medicine} />
+        
+        
       </Switch>
     </div>
   );
-};
+}
+export default Category;
