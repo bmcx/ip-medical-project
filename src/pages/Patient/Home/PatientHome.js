@@ -1,6 +1,16 @@
-const PatientHome = () => {
+import { CalendarContainer } from "react-datepicker"
+import CalendarMonth from "./Components/CalenderMonth";
+import React from 'react';
+import { __RouterContext }  from "react-router";
+
+
+export const PatientHome = () => {
+    
     return (
         <div>
+            <CalendarMonth>
+                <CalendarContainer></CalendarContainer>
+            </CalendarMonth>
             <div className="bg-gray-100 rounded-lg shadow">
                 <div className="p-9 mb-5 font-mono">
                     <h1 className="text-4xl">User name</h1>
