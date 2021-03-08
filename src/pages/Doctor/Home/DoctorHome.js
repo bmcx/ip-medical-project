@@ -47,7 +47,7 @@ const DoctorHome = ({ match: { url } }) => {
         <div className=" mt-2 border border-blue-500 rounded-lg  ">
           <nav className="ml-10 ">
             <Link
-              to={`${url}/history`}
+              to={`${url}/home`}
               className="ml-10"
             >
               History
@@ -58,18 +58,18 @@ const DoctorHome = ({ match: { url } }) => {
             <Link to={`${url}/schedule`} className="ml-10">
               Schedule
             </Link>
-            <Link to={`${url}/appointments`} className="ml-10">
+          { /* <Link to={`${url}/appointments`} className="ml-10">
               Appointments
-            </Link>
+  </Link>*/}
             <Link to={`${url}/category`} className="ml-10">
               Store
             </Link>
           </nav>
 
           <Switch>
-            <Route exact path={url} component={Home} />
-            <Route path={`${url}/history`} component={History} />
-            <Route path={`${url}/appointments`} component={Appointments} />
+            <Route exact path={url} component={Appointments} />
+            <Route path={`${url}/home`} component={Home} />
+           {/* <Route path={`${url}/appointments`} component={Appointments} />*/}
             <Route path={`${url}/diagnosis`} component={Diagnosis} />
             <Route path={`${url}/schedule`} component={Schedule} />
             
