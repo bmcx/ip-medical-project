@@ -7,6 +7,7 @@ import {
   IconLogo,
   IconNavProfile,
   IconSettingsOutline,
+  IconUsersOutline,
 } from "../components/Icons";
 import { Link, Route, useHistory } from "react-router-dom";
 import React, { useState } from "react";
@@ -34,6 +35,11 @@ const doctorRoutes = [
     path: "/schedule",
     label: "Schedule",
     icon: <IconCalendarOutline strokeWidth={2} colorClass="text-white" />,
+  },
+  {
+    path: "/patients",
+    label: "Patients",
+    icon: <IconUsersOutline strokeWidth={2} colorClass="text-white" />,
   },
   {
     path: "/store",
