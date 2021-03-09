@@ -1,5 +1,6 @@
 import { IconSendOutline, IconSpinner } from "../../common/components/Icons";
 import { firestoreConnect, isLoaded } from "react-redux-firebase";
+import { useEffect, useState } from "react";
 
 import ChatMessageContainer from "./components/ChatMessageContainer";
 import ChatUserCard from "./components/ChatUserCard";
@@ -9,7 +10,6 @@ import { connect } from "react-redux";
 import moment from "moment";
 import { sendMessage } from "../../state/chat/chatActions";
 import { toast } from "react-toastify";
-import { useState } from "react";
 
 const ChatContainer = (props) => {
   const { chats, role, sendMessage } = props;
@@ -79,6 +79,7 @@ const ChatContainer = (props) => {
                     setSelectedUser(e);
                     setSelectedChat(chat.id);
                   }}
+                  query={query}
                   active={selectedChat === chat.id}
                   lastMessage={{
                     at: chat.lastMessageAt,
@@ -158,7 +159,6 @@ export default compose(
             "==",
             props.uid,
           ],
-          orderBy: ["createdAt", "desc"],
         },
       ];
     return [];

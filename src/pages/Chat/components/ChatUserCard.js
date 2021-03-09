@@ -4,7 +4,19 @@ import { firestoreConnect } from "react-redux-firebase";
 import moment from "moment";
 
 const ChatUserCard = (props) => {
-  const { user, lastMessage = {}, active = false, onClick } = props;
+  const { user, lastMessage = {}, active = false, onClick, query } = props;
+  if (
+    query !== "" &&
+    !user.firstName.toLowerCase().includes(query) &&
+    !user.lastName.toLowerCase().includes(query)
+  )
+    return (
+      <div
+        onClick={() => onClick(user)}
+        className={`w-64 `}
+      >
+      </div>
+    );
   return (
     <div
       onClick={() => onClick(user)}
