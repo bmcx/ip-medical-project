@@ -1,133 +1,117 @@
-import FormInput from "../../common/components/FormInput"
+import FormInput from "../../common/components/FormInput";
+import { connect } from "react-redux";
+import { isLoaded } from "react-redux-firebase";
 
-
-const Profile = () => {
+const Profile = (props) => {
+  const { loaded, profile, uid } = props;
   return (
-    <div className="ml-10 mt-5"> Edit Profile
+    <div className="ml-10 mt-5">
+      Your profile
       <div className="flex rounded-x1 p-8 ml-20">
         <div className="m-5 mt-4 ml-10 sm:flex ">
-          <a href="" className="flex item-center no-underline">
-            <div className="flex-shrink-0">
-              <img className="h-28 w-28 rounded-full border-2 border-white" src="logo192.png"></img>
-            </div>
-          </a>
+          <div className="flex-shrink-0">
+            <img
+              alt="avatar"
+              className="h-28 w-28 rounded-full border-2 border-white"
+              src={profile?.photo}
+            ></img>
+          </div>
         </div>
 
-
-        <div className="m-10 ml-20">
-          <div className="flex justify-between items-center">
-            <select className="h-7 mt-2 mr-1  focus:border-blue-500 
+        <div className="m-10 ml-20 select-none">
+          <div className="flex justify-between items-center space-x-2">
+            {/* <select
+              className="h-7 mt-2 mr-1  focus:border-blue-500 
                     focus:ring-blue-300 focus:ring-2 bg-white text-gray-700 border border-gray-300 
                     focus:outline-none rounded-lg  transition-all 
-                    ease-out duration-300"  >
-
+                    ease-out duration-300"
+            >
               <option value="Rev">Rev.</option>
               <option value="Dr">Dr.</option>
               <option value="Mr">Mr.</option>
               <option value="Master">Master</option>
               <option value="Mrs">Mrs.</option>
               <option value="Miss">Miss.</option>
-            </select>
-            <div className="w-full mr-1">
-
-              <FormInput placeholder="First Name" className="w-full mx-w-lg">
-                <div className="flex flex-wrap mx-3 mb6"></div>
-                <input className="flex"> </input>
-
-
-              </FormInput>
+            </select> */}
+            <div className="w-full">
+              <FormInput
+                labelText="First Name"
+                placeholder="First Name"
+                className="w-full mx-w-lg"
+                defaultValue={profile?.firstName}
+              />
             </div>
             <div className="w-full">
-              <FormInput placeholder="Surname" className="w-full mx-w-lg ">
-                <div className="flex flex-wrap mx-3 mb6"></div>
-                <input className="flex"> </input>
-              </FormInput>
+              <FormInput
+                labelText="Last Name"
+                placeholder="Last Name"
+                className="w-full mx-w-lg "
+                defaultValue={profile?.lastName}
+              />
             </div>
-
           </div>
-          <div>
-            <FormInput placeholder="Adreess" className=" mx-w-lg">
-              <div className="flex flex-wrap mx-3 mb6"></div>
-              <input className="flex"> </input>
-
-            </FormInput>
-            <div> <FormInput placeholder="E-mail" className="w-full mx-w-lg">
-              <div className="flex flex-wrap mx-3 mb6"></div>
-              <input className="flex"> </input>
-
-
-            </FormInput>
-              <FormInput placeholder="Contact Number" className="w-full mx-w-lg">
-                <div className="flex flex-wrap mx-3 mb6"></div>
-                <input className="flex"> </input>
-
-
-              </FormInput>
-
-              <FormInput placeholder="Occupation" required="ture" className="w-full mx-w-lg">
-                <div className="flex flex-wrap mx-3 mb6"></div>
-                <input className="flex"> </input>
-
-
-              </FormInput>
-
-             
-              <div className="  mr-96">
-                <div className="flex justify-between items-center">
-                  <div className="mr-2">
-                    <FormInput placeholder="Height" required="ture" className="w-5">
-                      <div className="flex flex-wrap mx-3 mb6"></div>
-                      <input className="flex"> </input>
-                    </FormInput>
-                  </div>
-                  <div>
-                    <FormInput placeholder="Weight" required="ture" className="w-5">
-                      <div className="flex flex-wrap mx-3 mb6"></div>
-                      <input className="flex"> </input>
-                    </FormInput>
-                  </div>
-                </div>
-              </div>
-              <div className="w-24">
-                <FormInput placeholder="Gender" required="ture" className="w-5">
-                  <div className="flex flex-wrap mx-3 mb6"></div>
-                  <input className="flex"> </input>
-
-              
-
-                </FormInput>
-              </div>
-              <div className="mr-16">
-                <div className="flex justify-between items-center">
-                  <div className="">
-
-                    <label className="">Date of Birth : </label><input className=" focus:border-blue-500 
+          <div className="mt-4">
+            <FormInput
+              labelText="National Identity Card Number"
+              placeholder="NIC"
+              className=" mx-w-lg"
+              defaultValue={profile?.nic}
+              maxLength="14"
+            />
+            <div className="mt-4">
+              <FormInput
+                labelText="Contact Number"
+                placeholder="Contact Number"
+                className="w-full mx-w-lg"
+                defaultValue={profile?.phone}
+                maxLength="10"
+              />
+              {/* <div className="w-24">
+                <FormInput
+                  placeholder="Gender"
+                  required="ture"
+                  className="w-5"
+                />
+              </div> */}
+            </div>
+            <div className="mt-4">
+              <div className="flex flex-col ">
+                <label
+                  className="block text-gray-600 text-sm font-medium mb-2"
+                  htmlFor="dob"
+                >
+                  Date of Birth
+                </label>
+                <input
+                  id="dob"
+                  className=" focus:border-blue-500 
                     focus:ring-blue-300 focus:ring-2 bg-white text-gray-700 border border-gray-300 
                     focus:outline-none rounded-lg py-1 px-4 block w-full transition-all 
-                    ease-out duration-300" type="date" value="2021.03.03" />
-
-                  </div>
-                </div>
+                    ease-out duration-300"
+                  type="date"
+                  value={profile?.dob.toDate().toLocaleDateString("en-CA")}
+                />
               </div>
-
-
-
-
             </div>
           </div>
-
-
         </div>
       </div>
-    </div >
-
-
-
-
-
-
-  )
+    </div>
+  );
 };
 
+const mapStateToProps = (state, props) => {
+  return {
+    loaded: isLoaded(state.firebase?.profile),
+    uid: state.firebase?.auth?.uid,
+    profile: state.firebase?.profile,
+  };
+};
 
-export default Profile;
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    // sendMessage: (chatId, data) => dispatch(sendMessage(chatId, data)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
