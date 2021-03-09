@@ -2,11 +2,8 @@ import { Link, Switch } from "react-router-dom";
 import { Route, __RouterContext } from "react-router";
 
 import { Appointments } from "./Components/Appointments";
-import { Category } from "../Store/Category";
 import { Diagnosis } from "./Components/Diagnosis";
-import { History } from "./Components/History";
 import { Home } from "./Components/Home";
-import { Schedule } from "./Components/Schedule";
 import { animated } from "react-spring";
 import { useContext } from "react";
 import { useTransition } from "react-spring";
@@ -55,15 +52,9 @@ const DoctorHome = ({ match: { url } }) => {
             <Link to={`${url}/diagnosis`} className="ml-10">
               Diagnosis
             </Link>
-            <Link to={`${url}/schedule`} className="ml-10">
-              Schedule
-            </Link>
           { /* <Link to={`${url}/appointments`} className="ml-10">
               Appointments
   </Link>*/}
-            <Link to={`${url}/category`} className="ml-10">
-              Store
-            </Link>
           </nav>
 
           <Switch>
@@ -71,11 +62,9 @@ const DoctorHome = ({ match: { url } }) => {
             <Route path={`${url}/home`} component={Home} />
            {/* <Route path={`${url}/appointments`} component={Appointments} />*/}
             <Route path={`${url}/diagnosis`} component={Diagnosis} />
-            <Route path={`${url}/schedule`} component={Schedule} />
             
           </Switch>
         </div>
-        <Switch><Route path={`${url}/category`} component={Category} /></Switch>
       </div>
     </div>
   );

@@ -89,7 +89,7 @@ const Profile = (props) => {
                     focus:outline-none rounded-lg py-1 px-4 block w-full transition-all 
                     ease-out duration-300"
                   type="date"
-                  value={profile?.dob.toDate().toLocaleDateString("en-CA")}
+                  value={profile?.dob?.toDate().toLocaleDateString("en-CA")}
                 />
               </div>
             </div>
