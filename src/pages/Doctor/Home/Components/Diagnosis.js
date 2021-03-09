@@ -6,7 +6,7 @@ export const Diagnosis = () => {
         <div className="flex-1  text-center  px-4 py-2 m-2
              bg-blue-500  grid grid-flow-col grid-rows-2 grid-cols-3 gap-4 border 
              rounded-lg border-blue-400 hover:bg-blue-600">Syntopms<div>
-               <button className="bg-gray-700 hover:bg-green-500 rounded-lg p-2">Add Syntopms</button></div>
+               <button className="bg-gray-700 hover:bg-green-500 rounded-lg p-2 text-white">Add Syntopms</button></div>
              </div>
        
         
@@ -23,7 +23,7 @@ export const Diagnosis = () => {
       <div className="flex-1  text-center  px-4 py-2 m-2
              bg-blue-500  grid   border 
              rounded-lg border-blue-400 hover:bg-blue-600">Prescripiton
-             <div className="mr-auto"><button className="bg-gray-700 hover:bg-green-500 rounded-lg p-2 mb-2 ">Add Medicine</button></div>
+             <div className="mr-auto"><button className="bg-gray-700 hover:bg-green-500 rounded-lg p-2 mb-2 text-white">Add Medicine</button></div>
              
              <table class="border-separate ">
   <thead>
@@ -65,7 +65,7 @@ export const Diagnosis = () => {
   </tbody>
 </table>
 
-<div><button className="bg-gray-700 hover:bg-green-500 rounded-lg p-2 mt-2">Submit</button></div>
+<div><button className="bg-gray-700 hover:bg-green-500 rounded-lg p-2 mt-2 text-white">Submit</button></div>
           
         </div>
 

@@ -4,6 +4,7 @@ import { Appointments } from "./Components/Appointments";
 import { useContext } from "react";
 import { useTransition } from "react-spring";
 import { History } from "./Components/History";
+import {Prescription} from "./Components/Prescription"
 
 
 
@@ -54,10 +55,10 @@ const PatientHome = ({ match: { url } }) => {
                         <Link to={`${url}/History`} className="ml-10">
                History
               </Link>
-              { /*  <Link to={`${url}/schedule`} className="ml-10">
-                Schedule
+              { /*   <Link to={`${url}/prescription`} className="ml-10">
+                Prescription
               </Link>
-           <Link to={`${url}/appointments`} className="ml-10">
+             <Link to={`${url}/appointments`} className="ml-10">
                 Appointments
     </Link>
               <Link to={`${url}/category`} className="ml-10">
@@ -69,8 +70,8 @@ const PatientHome = ({ match: { url } }) => {
                         <Route exact path={url} component={Appointments} />
                        <Route path={`${url}/history`} component={History} />
              {/* <Route path={`${url}/appointments`} component={Appointments} />
-              <Route path={`${url}/diagnosis`} component={Diagnosis} />
-              <Route path={`${url}/schedule`} component={Schedule} />*/}
+              <Route path={`${url}/diagnosis`} component={Diagnosis} />*/}
+              <Route path={`${url}/prescription`} component={Prescription} />
 
                     </Switch>
                 </div>
