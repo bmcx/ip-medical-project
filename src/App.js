@@ -5,6 +5,7 @@ import { isEmpty, isLoaded } from "react-redux-firebase";
 
 import AddProfileInfoContainer from "./pages/Auth/AddProfileInfoContainer";
 import AuthContainer from "./pages/Auth/AuthContainer";
+import Category from "./pages/Doctor/Store/Category";
 import ChatContainer from "./pages/Chat/ChatContainer";
 import DoctorHome from "./pages/Doctor/Home/DoctorHome";
 import LandingPage from "./pages/Landing/LandingPage";
@@ -12,6 +13,7 @@ import LoadingContainer from "./pages/Loading/LoadingContainer";
 import PageNotFound from "./pages/Error/PageNotFound";
 import PatientHome from "./pages/Patient/Home/PatientHome";
 import Profile from "./pages/Profile/Profile";
+import { Schedule } from "./pages/Doctor/Schedule/Schedule";
 import SideNav from "./common/containers/SideNavContainer";
 import { ToastContainer } from "react-toastify";
 import { __RouterContext } from "react-router";
@@ -137,6 +139,8 @@ function App(props) {
                 <Route path="/home" component={getHomePage()} />
                 <Route path="/chat" component={ChatContainer} />
                 <Route path="/profile" component={Profile} />
+                <Route path="/store" component={Category} />
+                <Route path="/schedule" component={Schedule} />
                 <Route path="*" component={PageNotFound} />
               </Switch>
             </animated.div>

@@ -1,4 +1,6 @@
 import {
+  IconBagOutline,
+  IconCalendarOutline,
   IconChatOutline,
   IconGlobeOutline,
   IconHomeOutline,
@@ -29,6 +31,16 @@ const doctorRoutes = [
     icon: <IconChatOutline strokeWidth={2} colorClass="text-white" />,
   },
   {
+    path: "/schedule",
+    label: "Schedule",
+    icon: <IconCalendarOutline strokeWidth={2} colorClass="text-white" />,
+  },
+  {
+    path: "/store",
+    label: "Store",
+    icon: <IconBagOutline strokeWidth={2} colorClass="text-white" />,
+  },
+  {
     path: "/settings",
     label: "Settings",
     icon: <IconSettingsOutline strokeWidth={2} colorClass="text-white" />,
@@ -51,26 +63,28 @@ const SideNav = (props) => {
     return commonRoutes;
   };
   return (
-    <div className="z-10 w-20 bg-blue-500 rounded-r-2xl mr-2 px-4 py-6 flex flex-col items-center">
+    <div className="z-10 w-20 bg-blue-500 rounded-r-2xl mr-2 px-4 py-6 flex flex-col ">
       <div className="flex-grow-0 w-10 h-10 ease-out duration-300">
         <IconLogo colorClass="text-white" />
       </div>
       <nav className="my-10 flex-grow">
-        <ul className="flex flex-col space-y-5">
+        <ul className="flex flex-col space-y-5 items-center">
           {getRoutesForUser().map((route) => (
-            <SideNavItem to={route.path} key={route.path}>
-              {(isActive) => (
-                <div
-                  className={`flex flex-row bg-white ${
-                    isActive
-                      ? "bg-opacity-20"
-                      : "bg-opacity-0 hover:bg-opacity-20"
-                  } p-2 justify-center items-center rounded-md ease-out duration-300`}
-                >
-                  {route.icon}
-                </div>
-              )}
-            </SideNavItem>
+            <NavTooltip tooltipText={route.label} key={route.path}>
+              <SideNavItem to={route.path}>
+                {(isActive) => (
+                  <div
+                    className={`flex flex-row bg-white ${
+                      isActive
+                        ? "bg-opacity-20"
+                        : "bg-opacity-0 hover:bg-opacity-20"
+                    } p-2 rounded-md ease-out duration-300 `}
+                  >
+                    {route.icon}
+                  </div>
+                )}
+              </SideNavItem>
+            </NavTooltip>
           ))}
         </ul>
       </nav>
