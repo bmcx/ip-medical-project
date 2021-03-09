@@ -158,6 +158,7 @@ export default compose(
             "==",
             props.uid,
           ],
+          orderBy: ["createdAt", "desc"],
         },
       ];
     return [];

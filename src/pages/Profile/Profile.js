@@ -110,7 +110,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch, props) => {
   return {
-    // sendMessage: (chatId, data) => dispatch(sendMessage(chatId, data)),
+    // updateProfile: (uid, data) => dispatch(updateProfile(uid, data)),
   };
 };
 
