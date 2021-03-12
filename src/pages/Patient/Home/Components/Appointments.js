@@ -7,6 +7,7 @@ import 'react-calendar/dist/Calendar.css';
 
 
 
+
 export const Appointments = () => {
 
     return (
@@ -76,10 +77,10 @@ export const Appointments = () => {
 
 
 <div >
-            <button className="bg-blue-500 hover:bg-blue-400 rounded-full p-2 mt-2  text-white ml-24 mb-2" >+Add Appointment</button>
+            <button className="bg-blue-500 hover:bg-blue-400 rounded-full p-2 mt-2 
+             text-white ml-24 mb-2" >+Add Appointment</button>
             <div className="flex flex-row justify-end   
-             
-             rounded-lg  hover:bg-blue-600">
+              rounded-lg  hover:bg-blue-600">
                  <div>
                    <div>
                        <CalendarMonth></CalendarMonth>

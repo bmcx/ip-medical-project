@@ -1,8 +1,8 @@
 export const Prescription = () => {
     return(
-        <div>
-            <div className="m-4">
-                doctors prescription for doctore 
+        <div className="bg-gray-100">
+            <div className="m-4 ">
+                Date
             </div>
         </div>
 
