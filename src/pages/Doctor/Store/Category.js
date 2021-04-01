@@ -1,19 +1,20 @@
-import React from "react";
 import { Link, Switch } from "react-router-dom";
 import { Route, __RouterContext } from "react-router";
-import FormInputControlled from "../../../common/components/FormInputControlled";
-import { useState } from "react";
-import { showAuthModal } from "../../../state/auth/authActions";
-import Medicine from "./Medicine";
-import AddCategory from "./AddCategory";
 
+import AddCategory from "./AddCategory";
+import FormInputControlled from "../../../common/components/FormInputControlled";
+import Medicine from "./Medicine";
+import React from "react";
+import Stock from "./Stock";
+import { showAuthModal } from "../../../state/auth/authActions";
+import { useState } from "react";
 
 export const Category = ({ match: { url } }) => {
   const [query, setQuery] = useState("");
   return (
-    <div>
-      <div className="px-10 py-10 absolute w-full flex flex-row justify-between space-x-4 items-center  h-12">
-        <div className="w-64 mx-1">
+    <div className="w-full">
+      <Stock />
+      {/* <div className="w-64 mx-1">
           <FormInputControlled
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -114,16 +115,8 @@ export const Category = ({ match: { url } }) => {
               </table>
             </div>
           </div>
-        </div>
-      </div>
-      <Switch>
-        <Route path={`${url}/addcategory`} component={AddCategory} />
-        <Route path={`${url}/:categoryID`} component={Medicine} />
-        <Route path={`${url}/Allergenics`} component={Medicine} />
-        
-        
-      </Switch>
+  </div> */}
     </div>
   );
-}
+};
 export default Category;

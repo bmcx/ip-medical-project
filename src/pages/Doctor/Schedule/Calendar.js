@@ -136,7 +136,7 @@ class CustomCalendar extends React.Component {
               !dateFns.isSameMonth(day, monthStart)
                 ? "opacity-40"
                 : dateFns.isSameDay(day, selectedDate)
-                ? "bg-gray-200"
+                ? "bg-blue-200"
                 : ""
             }`}
             key={day}

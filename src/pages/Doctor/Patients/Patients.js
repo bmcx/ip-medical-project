@@ -33,7 +33,7 @@ const Patients = (props) => {
     <div className="px-8 py-10 ">
       <div className="text-md mb-6 font-bold">Patient Appointments</div>
       <div>
-        <table class="min-w-full table-auto">
+        <table class="min-w-full table-auto  rounded-md overflow-hidden">
           <thead class="justify-between">
             <tr class="bg-gray-800">
               <th class="py-3 px-2 text-left w-16">
