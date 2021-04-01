@@ -38,7 +38,7 @@ const doctorRoutes = [
   },
   {
     path: "/patients",
-    label: "Patients",
+    label: "Patient Appointments",
     icon: <IconUsersOutline strokeWidth={2} colorClass="text-white" />,
   },
   {

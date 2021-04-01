@@ -31,7 +31,7 @@ const Patients = (props) => {
   if (!loaded) return <div></div>;
   return (
     <div className="px-8 py-10 ">
-      <div className="text-xl mb-10 font-bold">Patient Appointments</div>
+      <div className="text-md mb-6 font-bold">Patient Appointments</div>
       <div>
         <table class="min-w-full table-auto">
           <thead class="justify-between">
@@ -121,7 +121,7 @@ const Patients = (props) => {
 const mapStateToProps = (state, props) => {
   return {
     appointments: state.firestore.ordered.appointments ?? [],
-    loaded: isLoaded(state.firestore.ordered),
+    loaded: isLoaded(state.firestore.ordered.appointments),
     myId: state.firebase.auth.uid ?? "",
   };
 };

@@ -1,15 +1,15 @@
 export const Appointments = () => {
   return (
     <div>
-      Appointments
+      Today's Appointments
       <div>
-        <div class="flex flex-col max-w-full overflow-x-hidden shadow-md m-8">
-          <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 bg-white p-6 space-y-2 md:space-y-0">
-            <div class="relative sm:col-span-2 md:col-span-3 lg:col-span-2">
+        <div class="flex flex-col max-w-full overflow-x-hidden shadow-md ">
+          <div class="flex bg-white p-6 space-x-2 ">
+            <div class="flex-1">
               <input
                 type="text"
                 placeholder="Search ....."
-                class="block w-full px-8 py-2 border border-gray-300 placeholder-gray-500 text-gray-800 shadow-sm rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
+                class=" w-full px-8 py-2 border border-gray-300 placeholder-gray-500 text-gray-800 shadow-sm rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
               />
 
               <svg
@@ -30,17 +30,8 @@ export const Appointments = () => {
 
             <div class="">
               <select
-                name="representative"
-                class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-800 shadow-sm rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
-              >
-                <option value="">Representative</option>
-              </select>
-            </div>
-
-            <div class="">
-              <select
                 name="status"
-                class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-800 shadow-sm rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
+                class="appearance-none relative  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-800 shadow-sm rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
               >
                 <option value="">Status Report</option>
               </select>
@@ -49,15 +40,11 @@ export const Appointments = () => {
             <div class="">
               <select
                 name="schedule"
-                class="appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-800 shadow-sm rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
+                class="appearance-none relative  w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-800 shadow-sm rounded-md focus:outline-none focus:ring-gray-500 focus:border-gray-500 focus:z-10 sm:text-sm"
               >
                 <option value="">Schedule Date</option>
               </select>
             </div>
-
-            <button class="bg-indigo-800 text-white text-xs font-semibold py-2 rounded-md border-0">
-              Add Schedule
-            </button>
           </div>
 
           <table class="overflow-x-auto w-full bg-white">
