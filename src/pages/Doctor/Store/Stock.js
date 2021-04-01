@@ -130,7 +130,7 @@ const Stock = (props) => {
   );
 };
 
-export const StockItem = ({ item, onSave, onDelete }) => {
+const StockItem = ({ item, onSave, onDelete }) => {
   const [updated, setUpdated] = useState(false);
   const [val, setVal] = useState(item.qty);
   const [delText, setDelText] = useState("Delete");

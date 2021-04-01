@@ -1,85 +1,93 @@
-import { Link, Switch } from "react-router-dom";
-import { Route, __RouterContext } from "react-router";
-import { Appointments } from "./Components/Appointments";
-import { useContext } from "react";
-import { useTransition } from "react-spring";
-import { History } from "./Components/History";
-import {Prescription} from "./Components/Prescription";
-import {Results} from "./Components/Results";
+import React, { useState } from "react";
+import { firestoreConnect, isLoaded } from "react-redux-firebase";
 
+import { IconSpinner } from "../../../common/components/Icons";
+import Schedule from "./Components/Schedule";
+import { compose } from "redux";
+import { connect } from "react-redux";
 
-
-
-
-
-const PatientHome = ({ match: { url } }) => {
-    const { location } = useContext(__RouterContext);
-    const routeTransitions = useTransition(
-        location,
-        (location) => location.pathname,
-        {
-            from: {
-                opacity: 0,
-                transform: "translate(5%,0)",
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-            },
-            enter: {
-                opacity: 1,
-                transform: "translate(0,0)",
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-            },
-            leave: {
-                opacity: 0,
-                transform: "translate(-5%,0)",
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-            },
-        }
-    );
+const PatientHome = (props) => {
+  const { doctors, loaded } = props;
+  const [selectedDoctor, setSelectedDoctor] = useState();
+  if (!loaded)
     return (
-        <div className="m-1">
-            Patient Home
-            <div className="m-5">
-                <div className=" mt-2 border border-blue-500 rounded-lg  ">
-                    <nav className="ml-10 ">
-                        <Link
-                            to={`${url}/appointments`}
-                            className="ml-10"
-                        >
-                           
-              </Link>
-                        <Link to={`${url}/History`} className="ml-10">
-              Medical History
-              </Link>
-               <Link to={`${url}/results`} className="ml-10">
-                Lab Results
-                </Link>
-                 <Link to={`${url}/prescription`} className="ml-10">
-                Prescription    </Link>
-    { /* <Link to={`${url}/category`} className="ml-10">
-                Store
-              </Link>*/}
-                    </nav>
-
-                    <Switch>
-                        <Route exact path={url} component={Appointments} />
-                       <Route path={`${url}/history`} component={History} />
-              <Route path={`${url}/results`} component={Results} />
-             {/* <Route path={`${url}/diagnosis`} component={Diagnosis} />*/}
-              <Route path={`${url}/prescription`} component={Prescription} />
-
-                    </Switch>
-                </div>
-
-            </div>
+      <div className="w-full h-full flex flex-row justify-center items-center">
+        <div className="w-8 h-8 text-blue-500 mb-2 mt-8">
+          <IconSpinner />
         </div>
+      </div>
     );
 
-}
+  return (
+    <div className="my-10 mx-8">
+      <div className="text-md mb-6 font-bold">Doctors availability</div>
+      <div className="flex flex-col">
+        <div class="flex flex-row space-x-2 border-b pb-4 mb-4">
+          {doctors &&
+            doctors.map((doctor) => {
+              return (
+                <div
+                  className={`p-4 select-none cursor-pointer ${
+                    selectedDoctor?.id === doctor.id
+                      ? "bg-blue-400"
+                      : "bg-gray-100"
+                  } rounded-md shadow-sm hover:shadow duration-300 ease-out`}
+                  onClick={() => {
+                    if (selectedDoctor) setSelectedDoctor(null);
+                    else setSelectedDoctor(doctor);
+                  }}
+                >
+                  <div className="flex flex-col items-center">
+                    <img
+                      alt="avatar"
+                      className="h-16 w-16 rounded-full border-2 border-white"
+                      src={doctor?.photo}
+                    />
+                    <div
+                      className={`mt-2 font-bold duration-300 ease-out ${
+                        selectedDoctor?.id === doctor.id
+                          ? "text-white"
+                          : "text-gray-600"
+                      }`}
+                    >
+                      Dr. {doctor?.firstName} {doctor?.lastName}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+        </div>
+        {selectedDoctor ? (
+          <>
+            Available days
+            <Schedule id={selectedDoctor.id} />
+          </>
+        ) : (
+          <div className="text-center">Select a doctor</div>
+        )}
+      </div>
+    </div>
+  );
+};
 
-export default PatientHome
+const mapStateToProps = (state, props) => {
+  return {
+    doctors: state.firestore.ordered.doctors ?? [],
+    loaded: isLoaded(state.firestore.ordered.doctors),
+    myId: state.firebase.auth.uid ?? "",
+  };
+};
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect(() => {
+    return [
+      {
+        collection: "users",
+        where: ["role", "==", "DOCTOR"],
+        orderBy: "firstName",
+        storeAs: "doctors",
+      },
+    ];
+  })
+)(PatientHome);
