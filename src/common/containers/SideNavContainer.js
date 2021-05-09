@@ -6,8 +6,11 @@ import {
   IconHomeOutline,
   IconLogo,
   IconNavProfile,
+  IconSendOutline,
   IconSettingsOutline,
   IconUsersOutline,
+  IconClipboard,
+ 
 } from "../components/Icons";
 import { Link, Route, useHistory } from "react-router-dom";
 import React, { useState } from "react";
@@ -57,7 +60,12 @@ const patientRoutes = [
     path: "/chat",
     label: "Chat",
     icon: <IconChatOutline strokeWidth={2} colorClass="text-white" />,
-  },
+ },
+ {
+   path:"/prescription",
+   lable:"Prescription",
+   icon:<IconClipboard strokeWidth={2} colorClass="text-white"/>,
+ },
 ];
 
 const SideNav = (props) => {

@@ -3,8 +3,10 @@ import { firestoreConnect, isLoaded } from "react-redux-firebase";
 
 import { IconSpinner } from "../../../common/components/Icons";
 import Schedule from "./Components/Schedule";
+
 import { compose } from "redux";
 import { connect } from "react-redux";
+
 
 const PatientHome = (props) => {
   const { doctors, loaded } = props;
@@ -21,6 +23,7 @@ const PatientHome = (props) => {
   return (
     <div className="my-10 mx-8">
       <div className="text-md mb-6 font-bold">Doctors availability</div>
+      
       <div className="flex flex-col">
         <div class="flex flex-row space-x-2 border-b pb-4 mb-4">
           {doctors &&
@@ -37,6 +40,8 @@ const PatientHome = (props) => {
                     else setSelectedDoctor(doctor);
                   }}
                 >
+           
+             
                   <div className="flex flex-col items-center">
                     <img
                       alt="avatar"
@@ -61,11 +66,18 @@ const PatientHome = (props) => {
           <>
             Available days
             <Schedule id={selectedDoctor.id} />
-          </>
-        ) : (
+           </>
+         
+        ):(
           <div className="text-center">Select a doctor</div>
+
+         
+          
+          
+          
         )}
       </div>
+      
     </div>
   );
 };

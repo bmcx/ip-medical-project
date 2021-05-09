@@ -2,8 +2,8 @@ import { Link, Switch } from "react-router-dom";
 import { Route, __RouterContext } from "react-router";
 
 import { Appointments } from "./Components/Appointments";
-import { Diagnosis } from "./Components/Diagnosis";
-import { Home } from "./Components/Home";
+//import { Diagnosis } from "./Components/Diagnosis";
+//import { Home } from "./Components/Home";
 import Patients from "../Patients/Patients";
 import { animated } from "react-spring";
 import { compose } from "redux";
@@ -50,6 +50,8 @@ const DoctorHome = ({ match: { url }, profile }) => {
     </div>
   );
 };
+
+
 
 const mapStateToProps = (state, props) => {
   console.log(state);

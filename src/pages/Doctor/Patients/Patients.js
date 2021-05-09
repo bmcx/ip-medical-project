@@ -1,5 +1,5 @@
 import { firestoreConnect, isLoaded } from "react-redux-firebase";
-
+import { Link } from "react-router-dom";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { getFirestore } from "redux-firestore";
@@ -9,7 +9,10 @@ import { useState } from "react";
 const Patients = (props) => {
   const { appointments, loaded } = props;
   const [userPhoto, setUserPhoto] = useState("");
-  const [userName, setUserName] = useState("N/A");
+  const [userName, setUserName] = useState("");
+  const [uid,setUid]=useState("");
+
+
 
   const firestore = getFirestore();
 
@@ -23,15 +26,23 @@ const Patients = (props) => {
   };
 
   const getPatientData = async (ref) => {
-    let patient = (await ref.get()).data();
+    let patientRef = await ref.get();
+    let patient = patientRef.data();
     setUserPhoto(patient.photo);
     setUserName(`${patient.firstName} ${patient.lastName}`);
+    setUid(patientRef.id);
   };
 
-  if (!loaded) return <div></div>;
+  if (!loaded) return <div></div>
   return (
     <div className="px-8 py-10 ">
       <div className="text-md mb-6 font-bold">Patient Appointments</div>
+      <div className="flex flex-col">
+<div className="flex flex-col flex-row space-x-2 border-b pb-4 mb-4">
+  
+
+</div>
+</div>
       <div>
         <table class="min-w-full table-auto  rounded-md overflow-hidden">
           <thead class="justify-between">
@@ -52,6 +63,9 @@ const Patients = (props) => {
 
               <th class="py-3 px-2 text-left w-16">
                 <span class="text-gray-300">Status</span>
+              </th>
+              <th class="py-3 px-2 text-left w-16">
+                <span class="text-gray-300">Action</span>
               </th>
             </tr>
           </thead>
@@ -107,6 +121,9 @@ const Patients = (props) => {
                           PENDING
                         </option>
                       </select>
+                    </td>
+                    <td class="py-3 px-2 text-left whitespace-nowrap">
+                      <Link to={`/patients/${uid}`}>Open</Link>
                     </td>
                   </tr>
                 );
