@@ -28,35 +28,12 @@ const commonRoutes = [
   },
 ];
 
-// const doctorRoutes = [
-//   {
-//     path: "/chat",
-//     label: "Chat",
-//     icon: <IconChatOutline strokeWidth={2} colorClass="text-white" />,
-//   },
-//   {
-//     path: "/schedule",
-//     label: "Schedule",
-//     icon: <IconCalendarOutline strokeWidth={2} colorClass="text-white" />,
-//   },
-//   {
-//     path: "/patients",
-//     label: "Patient Appointments",
-//     icon: <IconUsersOutline strokeWidth={2} colorClass="text-white" />,
-//   },
-//   {
-//     path: "/store",
-//     label: "Store",
-//     icon: <IconBagOutline strokeWidth={2} colorClass="text-white" />,
-//   },
-//   {
-//     path: "/settings",
-//     label: "Settings",
-//     icon: <IconSettingsOutline strokeWidth={2} colorClass="text-white" />,
-//   },
-// ];
 const doctorRoutes = [
-  
+  {
+    path: "/chat",
+    label: "Chat",
+    icon: <IconChatOutline strokeWidth={2} colorClass="text-white" />,
+  },
   {
     path: "/schedule",
     label: "Schedule",
@@ -68,11 +45,17 @@ const doctorRoutes = [
     icon: <IconUsersOutline strokeWidth={2} colorClass="text-white" />,
   },
   {
+    path: "/store",
+    label: "Store",
+    icon: <IconBagOutline strokeWidth={2} colorClass="text-white" />,
+  },
+  {
     path: "/settings",
     label: "Settings",
     icon: <IconSettingsOutline strokeWidth={2} colorClass="text-white" />,
   },
 ];
+
 const patientRoutes = [
   {
     path: "/chat",
