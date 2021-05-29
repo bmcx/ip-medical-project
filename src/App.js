@@ -15,12 +15,14 @@ import PatientHome from "./pages/Patient/Home/PatientHome";
 import Patients from "./pages/Doctor/Patients/Patients";
 import Profile from "./pages/Profile/Profile";
 import { Schedule } from "./pages/Doctor/Schedule/Schedule";
-import { Prescription } from "./pages/Patient/Home/Components/Prescription";
+//import { Prescription } from "./pages/Doctor/Prescription/Prescription";
+import Prescription_p from "./pages/Patient/Home/Components/Prescription_p";
 import SideNav from "./common/containers/SideNavContainer";
 import SinglePatient from "./pages/Doctor/Patients/SinglePatient";
 import { ToastContainer } from "react-toastify";
 import { __RouterContext } from "react-router";
 import { connect } from "react-redux";
+
 
 
 function App(props) {
@@ -147,7 +149,7 @@ function App(props) {
                 <Route path="/schedule" component={Schedule} />
                 <Route path="/patients" component={Patients} exact />
                 <Route path="/patients/:id" component={SinglePatient} />
-                <Route path="/prescription" component={Prescription}/>
+                <Route path="/prescription_p" component={Prescription_p}/>
                 <Route path="*" component={PageNotFound} />
               </Switch>
             </animated.div>

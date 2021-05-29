@@ -63,8 +63,8 @@ const patientRoutes = [
     icon: <IconChatOutline strokeWidth={2} colorClass="text-white" />,
  },
  {
-   path:"/prescription",
-   lable:"Prescription",
+   path:"/prescription_p",
+   label:"Prescription",
    icon:<IconClipboard strokeWidth={2} colorClass="text-white"/>,
  },
 ];

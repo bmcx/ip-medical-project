@@ -1,10 +1,21 @@
+import { updateLocale } from "moment";
 import React from "react";
+import {Router,__RouterContext} from "react-router";
 import { Link } from "react-router-dom";
+import Prescription from "../../../Doctor/Prescription/Prescription"
 
-export const Prescription = () => {
-  return (
-    <div className="my-10 mx-8">
-      <div className="text-md mb-6 font-bold">Prescription</div>
+
+
+
+export const Prescription_p = () => {
+ 
+
+ return (  
+     <div className="my-10 mx-8">
+       <Prescription/>
+    {/*  <div className="text-md mb-6 font-bold"> <Prescription/> </div>
+
+     
 
       <div className="flex flex-col">
         <table class="border-separate mt-4 ">
@@ -70,20 +81,10 @@ export const Prescription = () => {
             </tr>
           </tbody>
         </table>{" "}
-        <div>
-          <button
-            className="bg-blue-500 hover:bg-blue-400 rounded-full p-2 mt-2 
-             text-white ml-24 mb-2"
-          >
-            Add more
-          </button>
-        </div>
-        <div className="flex flex-row-revers">
-          <button> update</button>
-        </div>
-      </div>
-    </div>
+       
+ </div>*/}
+ </div>
   );
 };
 
-export default Prescription;
+export default Prescription_p;
