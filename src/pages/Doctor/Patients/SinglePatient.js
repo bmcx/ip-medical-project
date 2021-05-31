@@ -55,6 +55,9 @@ const SinglePatient = (props) => {
     
     </div>
     <div>
+    
+    </div>
+    <div>
         <Prescription />
       </div>
     </div>
@@ -66,9 +69,10 @@ const SinglePatient = (props) => {
 };
 const mapStateToProps = (state, props) => {
   return {
-    profile: state.firestore.ordered.profile ?? [],
-    loaded: isLoaded(state.firestore.ordered.profile),
-    myId: state.firebase.auth.uid ?? "",
+   user:state.firestore.data[`u${props.match.params.id}`],
+   profile: state.firestore.ordered.profile ?? [],
+   loaded: isLoaded(state.firestore.ordered.profile),
+   myId: state.firebase.auth.uid ?? "",
   };
 };
 
@@ -77,10 +81,11 @@ export default compose(
   firestoreConnect((props) => {
     return [
       {
-        collection: "profile",
-        where: ["patient", "==", "Profile"],
-        orderBy: "firstName",
-        storeAs: "doctors",
+        collection: "users",
+        doc: props.match.params.id,
+        //where: ["patient", "==", "User"],
+        //orderBy: "firstName",
+        storeAs:`u${props.match.params.id}`,
       },
     ];
   })

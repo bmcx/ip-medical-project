@@ -1,4 +1,5 @@
 import { firestoreConnect, isLoaded } from "react-redux-firebase";
+import React,{Component} from 'react';
 
 import FormInputControlled from "../../../common/components/FormInputControlled";
 import { IconSpinner } from "../../../common/components/Icons";
@@ -8,6 +9,8 @@ import { getFirestore } from "redux-firestore";
 import moment from "moment";
 import { useState } from "react";
 import {Router,__RouterContext} from "react-router";
+import CheckBox from "../../../common/components/CheckBox";
+
 
 export const Prescription = (props) => {
   const { prescription, role, loaded } = props;
@@ -16,12 +19,15 @@ export const Prescription = (props) => {
 
   const [newItemName, setNewItemName] = useState("");
   const [saving, setSaving] = useState(false);
+  
+  
 
-  const onQtySave = (val, id) => {
+  const onQtySave = (val, id,) => {
     firestore
       .collection("prescription")
       .doc(id)
       .update({
+        by:role,
         qty: val ?? 0,
         updatedAt: new Date(),
       });
@@ -41,7 +47,34 @@ export const Prescription = (props) => {
     setNewItemName("");
     setSaving(false);
   };
+  
+  /*contructor =(props)=>{
+    super(props)
+    this.state={
+      times:[
+        {id:1,value:"Breakfast",isChecked:false},
+        {id:2,value:"Lunch",isChecked:false},
+        {id:3,value:"Dinner",isChecked:false},
+      ]
+    }
+  
 
+  handleAllChecked =(event) =>{
+    let times = this.state.times
+    times.forEach(times=>times.isChecked = event.target.checked)
+    this.setState({times:times})
+  }
+  handleCheckChieldElement=(event)=>{
+    let times=this.state.times
+    times.forEach(times=>{
+      if(times.value===event.target.value)
+      times.isChechked = event.target.isChecked
+    })
+    this,setState({times:times})
+  }
+  }*/
+ 
+ 
   if (!loaded) return <div></div>;
   return (
     <div className="px-8 py-10 ">
@@ -127,8 +160,9 @@ export const Prescription = (props) => {
                     item={item}
                     onSave={onQtySave}
                     onDelete={onDelete}
+                    
 
-                  // uid={role==="DOCTOR"? prescription.doctorUid: prescription.patientUid}
+                // uid={role=== "DOCTOR"?prescription.doctorUid:""}
                   />
                 );
                 
@@ -183,10 +217,20 @@ const StockItem = ({ item, onSave, onDelete }) => {
         ) : null}
       </td>
       <td>
-      <input className="ml-24" type="checkbox"></input>
+        <input className="ml-10" type="checkbox"></input>
+     
+        
       </td>
       <td>
-        <input className="ml-12" type="checkbox"></input>
+      <input className="ml-10" type="checkbox" /*onClick={this.handleAllChecked} value="checkall"*/></input>
+            {/*  <ul>{
+                this.state.times.map((times)=>{
+                  return (<CheckBox handleCheckChieldElement={this.handleCheckChieldElement}  {...times} />)
+                })
+              }
+            </ul>*/}
+       
+           
       </td>
       <td class="py-3 px-2 text-left whitespace-nowrap">
         <span>
@@ -207,11 +251,13 @@ const StockItem = ({ item, onSave, onDelete }) => {
         </div>
       </td>
     </tr>
+    
+    
   );
 };
 
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state, _props) => {
   return {
     prescription: state.firestore.ordered.prescription ?? [],
     loaded: isLoaded(state.firestore.ordered.prescription),
@@ -229,15 +275,16 @@ export default compose(
       {
         collection: "prescription",
         orderBy: "name",
-       /* where:[
-         // props,role === "DOCTOR" ? "doctorUid" : "patientUid",
-          "==",
-          props.uid,
-        ]*/
+      /* where:[
+        props.role === "DOCTOR"?"doctorUid":"patientUid",
+        "==",
+          
+         props.uid,
+        ],*/
       },
                 
         
         ];
-    //return[];
+   // return[];
   })
 )(Prescription);
