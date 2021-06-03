@@ -95,6 +95,7 @@ export const completeProfileAction = (data) => {
         phone: data.phone,
         photo: photoUrl,
         profileCompleted: true,
+        role:"PATIENT"
       });
 
       dispatch({ type: actionTypes.PROFILE_COMPLETE_SUCCESS, res: "" });
